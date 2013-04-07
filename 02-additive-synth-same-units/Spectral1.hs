@@ -59,7 +59,8 @@ notes = chord [
     
 res = sco instr notes    
     
-main = totem res
+main = writeCsd "tmp.csd" res
+-- main = totem res
         
 
 

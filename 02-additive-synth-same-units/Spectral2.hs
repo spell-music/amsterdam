@@ -16,6 +16,7 @@ instr (amp, cps) = kr amp * fadeOut * env * osc (kr cps)
             
 res = sco instr notes
 
-main = totem res
+main = writeCsd "tmp.csd" res
+-- main = totem res
 
 

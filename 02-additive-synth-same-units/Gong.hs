@@ -56,5 +56,6 @@ res = sco instr $ line [
         2.2 +| ch dt5 amp2 cps2,
         7.8 +| ch dt6 amp4 cps1]]
 
-main = totem res    
+main = writeCsd "tmp.csd" res
+-- main = totem res
 

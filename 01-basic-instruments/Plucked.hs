@@ -21,7 +21,7 @@ module Plucked where
 import Csound.Base
 
 plucked :: (D, D, D) -> Sig
-plucked (amp, cps, dec) = oscili (envlpx (kr amp) 0.01 idur dec env 1 0.01) (kr cps) wave
+plucked (amp, cps, dec) = oscili (envlpx (sig amp) 0.01 idur dec env 1 0.01) (sig cps) wave
     where wave = sines [0.4, 0.3, 0.35, 0.5, 0.1, 0.2, 0.15, 0, 0.02, 0.05, 0.03] --  complex waveform
           env  = guardPoint $ eexps [0.00195, 1]
        

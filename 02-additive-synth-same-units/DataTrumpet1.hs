@@ -14,8 +14,8 @@ import Csound.Base
 
 instr :: (D, D, D, D, D) -> SE Sig
 instr (amp, cps, fundr, rise, dec) = do
-    rnd <- randi (kr $ fundr * 0.06) 10
-    return $ linen (kr amp) rise idur dec * osc (kr cps + rnd)
+    rnd <- randi (sig $ fundr * 0.06) 10
+    return $ linen (sig amp) rise idur dec * osc (sig cps + rnd)
 
 
 note fundr = chord . fmap (phi fundr)

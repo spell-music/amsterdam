@@ -21,7 +21,7 @@ module Gong where
 import Csound.Base
 
 instr :: (D, D) -> Sig
-instr (amp, cps) = kr amp * fadeOut * once (guardPoimt $ eexps [128, 1]) * osc (kr cps)
+instr (amp, cps) = sig amp * fadeOut * once (guardPoint $ eexps [128, 1]) * osc (sig cps)
     where fadeOut = linen 1 0 idur 0.25
 
 note dt amp cps = dt *| temp (amp, cps)

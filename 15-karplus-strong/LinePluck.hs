@@ -14,8 +14,8 @@ module LinePluck where
 import Csound.Base
 
 instr :: (D, D, D, Tab) -> Sig
-instr (amp, cps, buf, ft) = kr amp * linseg [1, 0.8 * idur, 1, 0.2 * idur, 0.0001] 
-    * pluck (kr amp) (kr cps) buf ft meth
+instr (amp, cps, buf, ft) = sig amp * linseg [1, 0.8 * idur, 1, 0.2 * idur, 0.0001] 
+    * pluck (sig amp) (sig cps) buf ft meth
     where meth = 1
 
 

@@ -27,7 +27,7 @@ module Vibrato where
 import Csound.Base
 
 instr :: (D, D, Tab, Tab, D) -> Sig
-instr (amp, cps, wave, env, lfoCps) = kr amp * once env * oscBy wave (kr cps) * (kr $ osc (kr lfoCps))
+instr (amp, cps, wave, env, lfoCps) = sig amp * once env * oscBy wave (sig cps) * (kr $ osc (sig lfoCps))
 
 note (wave, env, lfoCps) = delay 1.5 $ 1.5 *| temp (0.5, 800, wave, env, lfoCps)
 

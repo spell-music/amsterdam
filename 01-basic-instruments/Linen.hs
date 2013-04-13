@@ -8,7 +8,7 @@ module Linen where
 import Csound.Base
 
 instr :: (D, D, Tab, D, D) -> Sig
-instr (amp, cps, wave, rise, dec) = linen (kr amp) rise idur dec * oscBy wave (kr cps)
+instr (amp, cps, wave, rise, dec) = linen (sig amp) rise idur dec * oscBy wave (sig cps)
 
 note (cps, rise, dec) = delay 1 $ temp (0.5, cps, sines [1], rise, dec)
 

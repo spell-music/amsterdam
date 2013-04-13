@@ -22,14 +22,14 @@ import Csound.Base
 
 instr :: (D, D) -> Sig2
 instr (amp, pch) = (a13, a13 * a2)
-    where fq = kr $ cpspch pch
+    where fq = sig $ cpspch pch
 
           f x = 1 + 0.841 * x - 0.707 * x ** 2 - 0.595*x**3 + 0.5*x**4 + 0.42*x**5 
                 -0.354*x**6 - 0.279*x**7 + 0.25*x**8 + 0.21*x**9
 
           a13 = f a4
 
-          a1  = kr amp * once f31
+          a1  = sig amp * once f31
           a2  = a1 * osc fq
             
           a3  = linseg [1, 0.04, 0, idur - 0.04, 0]

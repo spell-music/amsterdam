@@ -33,7 +33,7 @@ import Csound.Base
 
 instr :: (Icps, Tab, D, Tab, Iamp, Tab) -> Sig
 instr (cps, wave, lfoRate, lfoShape, amp, env) = 
-    kr amp * once env * oscBy wave (kr cps * several lfoShape (kr lfoRate))
+    sig amp * once env * oscBy wave (sig cps * several lfoShape (sig lfoRate))
     
 waves = [
     sines [1, 0.4, 0.2, 0.1, 0.1, 0.05],        -- six harmonics

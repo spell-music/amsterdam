@@ -21,8 +21,8 @@ import Csound.Base
 
 instr :: (D, D, Tab, D) -> SE Sig
 instr (amp, cps, env, fundr) = do
-    rnd <- randi (kr $ fundr * 0.04) 20
-    return $ kr amp * once env * osc (kr cps + rnd)
+    rnd <- randi (sig $ fundr * 0.04) 20
+    return $ sig amp * once env * osc (sig cps + rnd)
 
 envelopes = fmap segs [
     [0, 20, 0.001,  32,  0.282,  28,  0.112, 778,  0.178, 88,  0.159, 54,  0.008, 24,  0.001],

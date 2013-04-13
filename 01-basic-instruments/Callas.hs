@@ -16,8 +16,8 @@ import Csound.Base
 
 instr :: (Iamp, Icps, Tab, Iamp, Icps, Tab) -> Sig
 instr (amp, cps, wave, width, rate, lfoShape) = env * oscBy wave lfo
-    where env = linen (kr amp) 0.1 idur 0.1
-          lfo = kr cps + kr width * oscBy lfoShape (kr rate)
+    where env = linen (sig amp) 0.1 idur 0.1
+          lfo = sig cps + sig width * oscBy lfoShape (sig rate)
           
 note width rate = line [temp (0.5, 800, sine, width, rate, sine), rest 2]
 
@@ -26,7 +26,6 @@ rates  = [5, 2]
 
 res = sco instr $ line [ note w r | r <- rates, w <- widths ]
 
-main = writeCsd "tmp.csd" res
-
--- main = totem res
+-- main = writeCsd "tmp.csd" res
+main = totem res
 

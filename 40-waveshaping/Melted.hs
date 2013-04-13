@@ -28,8 +28,8 @@ module Melted where
 import Csound.Base
 
 instr :: (D, D, Tab) -> Sig 
-instr (amp, pch, tf) = kr amp * tablei (a1 + 256) tf
-    where a1 = linen 255 0.1 idur 0.5 * osc (kr $ cpspch pch)
+instr (amp, pch, tf) = sig amp * tablei (a1 + 256) tf
+    where a1 = linen 255 0.1 idur 0.5 * osc (sig $ cpspch pch)
 
 segs' = setSize 512 . skipNorm . segs
 
@@ -47,14 +47,14 @@ tfms = [
 
 pchs = [7.00, 8.00, 9.04, 8.07, 8.11]
 
-n1 tfm = 2 *| temp (0.5, 7.00, tfm)
-n2 pch = temp (0.4, pch, tfms !! 2)
-n21 = (0.5 *| ) . n2
-n22 = (2   *| ) . n2
+i1 tfm = 2 *| temp (0.5, 7.00, tfm)
+i2 pch = temp (0.4, pch, tfms !! 2)
+i21 = (0.5 *| ) . i2
+i22 = (2   *| ) . i2
 
 res = sco instr $ line $ fmap line [
-    fmap n1  tfms,
-    fmap n21 pchs,
-    fmap n21 pchs]
+    fmap i1  tfms,
+    fmap i21 pchs,
+    fmap i21 pchs]
 
 main = writeCsd "tmp.csd" res

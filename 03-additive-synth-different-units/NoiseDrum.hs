@@ -17,7 +17,7 @@ envOsc env wave cps = once env * oscBy wave cps
 instr :: (D, D, Tab, Tab) -> SE Sig
 instr (amp, cps, f1, f2) = do
     r <- randi 1 400
-    return $ (kr amp * ) $ mean $ zipWith3 envOsc [f52, f52, f51] [sine, f2, f1] (fmap kr [500, cps, cps])  
+    return $ (sig amp * ) $ mean $ zipWith3 envOsc [f52, f52, f51] [sine, f2, f1] (fmap sig [500, cps, cps])  
     where f51 = guardPoint $ eexps [4096, 1]
           f52 = guardPoint $ eexps [256, 1]  
 

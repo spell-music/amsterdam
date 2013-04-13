@@ -14,9 +14,9 @@ module OctaveBuzz1 where
 import Csound.Base
 
 instr :: (D, D) -> Sig
-instr (amp, fqc) = buzz env (kr fqc) nH sine
-    where nH  = kr $ intD (sampleRate / (2 * fqc))
-          env = linen (kr amp) 0.2 idur 0.2
+instr (amp, fqc) = buzz env (sig fqc) nH sine
+    where nH  = sig $ intD (sampleRate / (2 * fqc))
+          env = linen (sig amp) 0.2 idur 0.2
               
 fqcs = [55, 110, 440, 1760, 3520, 7040]
 

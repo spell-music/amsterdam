@@ -25,15 +25,15 @@ module Network where
 import Csound.Base
 
 instr :: (D, D, D, D, (D, D, D, D, D), D, D) -> Sig2
-instr (amp, fqc, fqm, max, (bege, begdyn, breakp', mid, end), rtv, left) = (mixSig * kr left, mixSig * kr (1 - left))
+instr (amp, fqc, fqm, max, (bege, begdyn, breakp', mid, end), rtv, left) = (mixSig * sig left, mixSig * sig (1 - left))
     where breakp = idur / breakp'
-          e   = kr amp * expseg [0.0001, breakp, mid, idur - breakp, 0.0001]
-          dyn = kr (fqm * max) * linseg [begdyn, breakp, 1 - mid, idur - breakp, 0]
-          mod = dyn * osc (kr fqm) 
-          sig = e   * osc (kr fqc + mod)
+          e   = sig amp * expseg [0.0001, breakp, mid, idur - breakp, 0.0001]
+          dyn = sig (fqm * max) * linseg [begdyn, breakp, 1 - mid, idur - breakp, 0]
+          mod = dyn * osc (sig fqm) 
+          s   = e   * osc (sig fqc + mod)
             
-          rev = reverb (sig * kr rtv) (kr idur)
-          drySig = sig * (1 - kr rtv)
+          rev = reverb (s * sig rtv) (sig idur)
+          drySig = s * (1 - sig rtv)
           mixSig = rev + drySig
 
 

@@ -30,7 +30,7 @@ module Spectral1 where
 import Csound.Base 
 
 instr :: (D, D) -> Sig
-instr (amp, cps) = kr amp * env * env * osc (kr cps)
+instr (amp, cps) = sig amp * env * env * osc (sig cps)
     where env = once (esegs [0, 1, 0])
     
 

@@ -16,10 +16,10 @@ envOsc :: Tab -> Tab -> Cps -> Sig
 envOsc env wave cps = once env * oscBy wave cps
 
 instr :: (D, D, D) -> Sig
-instr (amp, pch, imax) = kr amp * envOsc fenv sine (fq1 + amod)
-    where amod = fq2 * kr imin + kr (imax - imin) * fq2 * envOsc fdyn sine fq2
-          fq1  = kr $ 3 * cpspch pch  
-          fq2  = kr $ 2 * cpspch pch  
+instr (amp, pch, imax) = sig amp * envOsc fenv sine (fq1 + amod)
+    where amod = fq2 * sig imin + sig (imax - imin) * fq2 * envOsc fdyn sine fq2
+          fq1  = sig $ 3 * cpspch pch  
+          fq2  = sig $ 2 * cpspch pch  
           imin = 2  
           fenv = exps [0.0001, 200, 1, 674, 1, 150, 0.0001]
           fdyn = eexps [1, 0.0001]   

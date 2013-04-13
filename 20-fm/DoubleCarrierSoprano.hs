@@ -14,11 +14,11 @@ import Csound.Base
 instr :: (D, D) -> SE Sig
 instr (amp, pch) = do
     v <- vibrato
-    let dev1   = kr pkdev1 * osc (kr modhz * v)       -- modulator
-        dev2   = dev1 * kr (fmtndx' / fndndx')      -- rescale for formant
-        fund   = fundEnv * osc ((kr carhz + dev1) * v)
-        form   = formEnv * osc ((kr fmthz' + dev2) * v)
-    return $ (fund + form) * kr amp       
+    let dev1   = sig pkdev1 * osc (sig modhz * v)       -- modulator
+        dev2   = dev1 * sig (fmtndx' / fndndx')      -- rescale for formant
+        fund   = fundEnv * osc ((sig carhz + dev1) * v)
+        form   = formEnv * osc ((sig fmthz' + dev2) * v)
+    return $ (fund + form) * sig amp       
     where
         ampfac = 0.5
         range  = 3
@@ -56,15 +56,15 @@ instr (amp, pch) = do
         portdev = 0.05
 
         -- vibrato
-        rnd     = randi (kr ivibwth) randhz     -- random contribution
-        vib     = linen (kr ivibwth) 0.6 idur 0.1 * osc vibhz
+        rnd     = randi (sig ivibwth) randhz     -- random contribution
+        vib     = linen (sig ivibwth) 0.6 idur 0.1 * osc vibhz
         port    = portdev * kr (oscBy fport 0.2)
         vibrato = fmap ((1 + vib + port) + ) rnd         
 
         -- envelopes
         dyn     = linseg  [0, 0.03, 1, idur - 0.03 - 0.01, 0.9, 0.01, 0]
-        fundEnv = linen (kr fndamp) 0.1 idur 0.08
-        formEnv = envlpx (kr fmtamp) 0.1 idur 0.08 fenv 1 0.01
+        fundEnv = linen (sig fndamp) 0.1 idur 0.08
+        formEnv = envlpx (sig fmtamp) 0.1 idur 0.08 fenv 1 0.01
 
         
 i1 start dur amp pch = delay start $ stretch dur $ temp (amp, pch)

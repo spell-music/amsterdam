@@ -17,7 +17,7 @@ module DecayExperiments where
 import Csound.Base
 
 instr :: (D, Tab, D, Tab) -> Sig
-instr (amp, env, cps, wave) = kr amp * once env * oscBy wave (kr cps)
+instr (amp, env, cps, wave) = sig amp * once env * oscBy wave (sig cps)
 
 waves = [
     segs [0, 10, 1, 20, 1, 20, -1, 20, -1, 10, 0],

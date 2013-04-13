@@ -10,10 +10,10 @@ routines in Music 5). (Risset 1969: #250)
 module ChoralReedy where
 
 import Csound.Base
-import Data.List(transpose)
+import qualified Data.List as L(transpose)
 
 reedy :: (D, D, Tab) -> Sig
-reedy (amp, cps, env) = once env * oscili (kr amp) (kr cps) wave
+reedy (amp, cps, env) = once env * oscili (sig amp) (sig cps) wave
     where wave = sines [0.4, 0.3, 0.35, 0.5, 0.1, 0.2, 0.15, 0, 0.02, 0.05, 0.03]
             
 envelope = esegs [0, 1, 0.8, 0.6, 0.7, 0.6, 0]   -- smooth: reed
@@ -21,7 +21,7 @@ envelope = esegs [0, 1, 0.8, 0.6, 0.7, 0.6, 0]   -- smooth: reed
 amp = 0.5
 
 -- we render three detuned versions of the melody and then mix them together with different delays
-notes = delay 1 $ chord $ zipWith delay [0, 0.03, 0.05] $ fmap line $ transpose $ fmap (\(dur, xs) -> [dur *| note x | x <- xs]) [
+notes = delay 1 $ chord $ zipWith delay [0, 0.03, 0.05] $ fmap line $ L.transpose $ fmap (\(dur, xs) -> [dur *| note x | x <- xs]) [
     (0.5,  [486, 492, 473]),
     (0.25, [615, 610, 629]),
     (0.25, [648, 660, 625]),
@@ -38,6 +38,5 @@ notes = delay 1 $ chord $ zipWith delay [0, 0.03, 0.05] $ fmap line $ transpose 
 res = sco reedy notes
 
 main = writeCsd "tmp.csd" res
-
 -- main = totem res
 

@@ -16,7 +16,7 @@ module Reedy where
 import Csound.Base
 
 reedy :: (D, D, Tab) -> Sig
-reedy (amp, cps, env) = once env * oscili (kr amp) (kr cps) wave
+reedy (amp, cps, env) = once env * oscili (sig amp) (sig cps) wave
     where wave = sines [0.4, 0.3, 0.35, 0.5, 0.1, 0.2, 0.15, 0, 0.02, 0.05, 0.03]
 
 envelopes = [
@@ -31,7 +31,6 @@ amp = 0.5
 
 note tab dur cps = dur *| temp (amp, cps, tab)
 
-melody :: Double -> Tab -> Sco (D, D, Tab)
 melody dt tab = delay dt $ line $ fmap (uncurry $ note tab) [
     (0.5,   486), (0.25,  615), (0.25,  648), (0.5,   729),
     (0.25,  972), (0.25,  890), (0.25,  820), (0.25,  729),

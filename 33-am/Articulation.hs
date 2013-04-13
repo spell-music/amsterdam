@@ -30,12 +30,12 @@ import Csound.Base
 
 instr1 :: (D, D, D, D, D) -> Sig
 instr1 (amp, rise, dec, fqc, fqm) = a1 * a2
-    where env = envlpx (kr amp) rise (1 / idur) dec (guardPoint $ eexps [0.01, 1]) 1 0.01
-          a1  = env * osc (kr fqc)  
-          a2  = oscBy (segs [0, 42, 1, 172, 1, 84, -1, 172, -1, 42, 0]) (kr fqm)  
+    where env = envlpx (sig amp) rise (1 / idur) dec (guardPoint $ eexps [0.01, 1]) 1 0.01
+          a1  = env * osc (sig fqc)  
+          a2  = oscBy (segs [0, 42, 1, 172, 1, 84, -1, 172, -1, 42, 0]) (sig fqm)  
             
 instr2 :: (D, D) -> Sig
-instr2 (amp, fq) = kr amp * once (guardPoint $ eexps [512, 1]) * osc (kr fq)
+instr2 (amp, fq) = sig amp * once (guardPoint $ eexps [512, 1]) * osc (sig fq)
 
 i11 start fqc fqm = delay start $ stretch 0.6 $ temp (0.5, 0.01, 0.6, fqc, fqm)
 

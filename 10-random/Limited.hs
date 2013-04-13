@@ -13,7 +13,7 @@ module Limited where
 import Csound.Base
 
 instr :: (D, D) -> SE Sig
-instr (amp, cps) = randi (linen (kr amp) rise idur dec) (kr cps)
+instr (amp, cps) = randi (linen (sig amp) rise idur dec) (sig cps)
     where rise = 0.4
           dec  = 0.4
 

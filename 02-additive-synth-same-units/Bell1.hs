@@ -18,7 +18,7 @@ module Bell where
 import Csound.Base
 
 instr :: (D, D, D) -> Sig
-instr (amp, cps, rat) = kr amp * fadeOut * once (guardPoint $ eexps [256, 1]) * osc (kr $ cps * rat)
+instr (amp, cps, rat) = sig amp * fadeOut * once (guardPoint $ eexps [256, 1]) * osc (sig $ cps * rat)
     where fadeOut = linen 1 0 idur 0.25
 
 note cps dt amp rat = dt *| temp (amp, cps, rat)

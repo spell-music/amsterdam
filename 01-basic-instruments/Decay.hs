@@ -16,7 +16,7 @@ module Decay where
 import Csound.Base
 
 instr :: (D, D, Tab, Tab) -> Sig
-instr (amp, cps, wave, env) = once env * oscili (kr amp) (kr cps) wave
+instr (amp, cps, wave, env) = once env * oscili (sig amp) (sig cps) wave
 
 envelopes = [
     esegs [1, 0],

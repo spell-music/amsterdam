@@ -24,7 +24,3 @@ res = sco instr notes
 
 main = writeCsd "tmp.csd" res
 
-
-
-
-

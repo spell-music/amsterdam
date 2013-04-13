@@ -18,8 +18,8 @@ import Csound.Base
 
 instr :: (Iamp, Icps, Icps, Icps) -> SE Sig
 instr (amp, randCps, cps, lfoCps) = do
-    env <- randi (kr amp) (kr randCps)
-    return $ env * oscBy (sines [1]) (kr cps * oscBy twoOctsDown (kr lfoCps))
+    env <- randi (sig amp) (sig randCps)
+    return $ env * oscBy (sines [1]) (sig cps * oscBy twoOctsDown (sig lfoCps))
     where twoOctsDown = segs [0.999, 20, 0.999, 500, 0.235, 20, 0.235]
 
 res = sco instr $ delay 1 $ chord [
@@ -27,7 +27,6 @@ res = sco instr $ delay 1 $ chord [
     delay 2 $ 6.5 *| temp (0.5, 150, 750, 3)]
     
 main = writeCsd "tmp.csd" res
-    
 -- main = totem res
     
     

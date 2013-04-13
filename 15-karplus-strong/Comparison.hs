@@ -18,13 +18,13 @@ module Comparison where
 import Csound.Base
 
 instr1 :: (D, D) -> Sig
-instr1 (amp, cps) = pluck (kr amp) (kr cps) buf ft meth
+instr1 (amp, cps) = pluck (sig amp) (sig cps) buf ft meth
     where buf = 128
           ft  = undefined -- zero ftable ???
           meth = 1
 
 instr2 :: (D, D) -> Sig
-instr2 (amp, cps) = pluck (kr amp) (kr cps) buf ft meth
+instr2 (amp, cps) = pluck (sig amp) (sig cps) buf ft meth
     where buf = 128
           ft  = undefined -- how to read tables from files ???
           meth = 1

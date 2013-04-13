@@ -34,8 +34,8 @@ import Csound.Base
 instr :: ((Iamp, Icps), (Iamp, Icps), (Iamp, Icps), Tab, D, (D, D), (D, D), (D, D)) -> Sig
 instr (str1, str2, str3, pcf, startval, attDec1, attDec2, attDec3) =
     mean (zipWith3 partial [str1, str2, str3] envelopes waves)
-    where pc = ar (once pcf) + kr startval
-          partial (amp, cps) env wave = kr amp * env * oscBy wave (pc * kr cps)
+    where pc = ar (once pcf) + sig startval
+          partial (amp, cps) env wave = sig amp * env * oscBy wave (pc * sig cps)
           env (att, dec) (start, end) = expseg [start, att, 0.99, idur - (att + dec), 0.99, dec, end]
           envelopes = zipWith env [attDec1, attDec2, attDec3] [(0.00097, 0.00097), (0.0039, 0.0000000059), (0.0039, 0.00000000000009)]
           waves = fmap partials [[1], [3, 4, 5], [8, 9, 10, 11, 12, 15, 17, 18]]

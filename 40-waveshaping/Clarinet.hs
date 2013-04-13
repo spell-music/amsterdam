@@ -18,10 +18,10 @@ module Clarinet where
 import Csound.Base
 
 instr :: (D, D) -> Sig
-instr (amp, pch) = kr amp * tablei (256 + a1) (setSize 512 $ segs [-1, 200, -0.5, 112, 0.5, 200, 1])
+instr (amp, pch) = sig amp * tablei (256 + a1) (setSize 512 $ segs [-1, 200, -0.5, 112, 0.5, 200, 1])
     where env = linen 255 0.085 idur dec
           dec = ifB (idur >* 0.75) 0.64 (idur - 0.085)
-          a1  = env * osc (kr $ cpspch pch)  
+          a1  = env * osc (sig $ cpspch pch)  
 
 i1 dur pch = dur *| temp (0.5, pch)
 

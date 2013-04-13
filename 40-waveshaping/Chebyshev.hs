@@ -18,8 +18,8 @@ import Csound.Base
 
 instr :: (D, D, Tab) -> Sig
 instr (amp, pch, tf) = a1 * env
-    where a1  = tablei (4096 * osc (kr $ cpspch pch)) tf
-          env = linen (kr amp) 0.085 idur 0.04
+    where a1  = tablei (4096 * osc (sig $ cpspch pch)) tf
+          env = linen (sig amp) 0.085 idur 0.04
             
 chebs = setSize 4096 . chebs1 1 1
 

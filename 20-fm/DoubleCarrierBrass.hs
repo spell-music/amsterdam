@@ -21,12 +21,12 @@ instr (amp, fq1, max1, max2) = a1 + a2
           form = 2100
           fq2 = intD ((form/fq1) + 0.5) * fq1          
         
-          env = kr amp * once ftab
-          dyn = (kr $ fq2 * min) + kr (fq2 * (max2 - min)) * once ftab
+          env = sig amp * once ftab
+          dyn = (sig $ fq2 * min) + sig (fq2 * (max2 - min)) * once ftab
                     
-          mod = dyn * osc (kr fqmod)  
-          a1  = env * osc (kr fq1 + mod)  
-          a2  = 2 * env * osc (kr fq2 + ((kr $ max2/max1) * mod))  
+          mod = dyn * osc (sig fqmod)  
+          a1  = env * osc (sig fq1 + mod)  
+          a2  = 2 * env * osc (sig fq2 + ((sig $ max2/max1) * mod))  
         
 note x = line [temp (0.5, x, 3, 1.5), rest 1]
 

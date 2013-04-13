@@ -9,7 +9,7 @@ module Caramel where
 import Csound.Base
 
 instr :: (D, D, D) -> Sig
-instr (amp, fqc, nH) = buzz env (kr fqc) (kr nH) sine
+instr (amp, fqc, nH) = buzz env (sig fqc) (sig nH) sine
     where env = expseg [0.1, 0.1 * idur, amp, 0.9 * idur, 0.1]
 
               

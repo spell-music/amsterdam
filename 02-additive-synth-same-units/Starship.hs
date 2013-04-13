@@ -18,8 +18,8 @@ import Csound.Base
 
 instr :: (D, D, D, (D, D, D, D, D)) -> Sig
 instr (amp, cps, rate, (off1, off2, off3, off4, off5)) = 
-    kr amp * mean [ osc (e + kr off) | off <- [0, off1, off2, off3, off4, off5]]
-    where e = kr cps * oscBy pitchConvert (kr $ 1/rate) 
+    sig amp * mean [ osc (e + sig off) | off <- [0, off1, off2, off3, off4, off5]]
+    where e = sig cps * oscBy pitchConvert (sig $ 1/rate) 
           pitchConvert = segs [0.25, 30, 0.25, 110, 0.5, 60, 0.25, 10, 0.25, 60, 0.5, 20, 0.75, 222, 0.5]  
     
 res = sco instr $ 20 *| temp (0.5, 1000, 20, (4.5, 9.4, 23, 39, 84))

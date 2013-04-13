@@ -28,11 +28,11 @@ import Csound.Base
 
 instr :: (D, D, Tab, D, D, Tab) -> Sig
 instr (amp, fqc, fc, imod, fqm, fm) = a2
-    where mod = kr (imod * amp) * oscBy fm (kr fqm)
-          a1  = mod + kr (amp * (2 - imod))
+    where mod = sig (imod * amp) * oscBy fm (sig fqm)
+          a1  = mod + sig (amp * (2 - imod))
           
           env = a1 * once (guardPoint $ exps [1, 50, 5000, 462, 1])    
-          a2  = env * oscBy fc (kr fqc)       
+          a2  = env * oscBy fc (sig fqc)       
             
 n1 mod = temp (0.5, 400, sine, mod, 100, sine)
 n2 fqm = temp (0.5, 400, sine, 1,   fqm, sine)

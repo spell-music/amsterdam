@@ -15,13 +15,13 @@ module Chaos where
 import Csound.Base
 
 modOsc :: D -> D -> D -> Tab -> Sig
-modOsc amp cps rate wave = kr amp * osc (kr cps * oscBy wave (kr rate))
+modOsc amp cps rate wave = sig amp * osc (sig cps * oscBy wave (sig rate))
 
 type D3 = (D, D, D)
 
 instr :: (D3, D, D3, D3, D3) -> SE Sig
 instr (a1, fqr, a2, a3, a4) = do
-    r <- randi 1 (kr fqr)
+    r <- randi 1 (sig fqr)
     return $ mean $ zipWith3 phi [1, r, 1, 1] [a1, a2, a3, a4] envelopes  
     where phi m (amp, cps, rate) tab = m * modOsc amp cps rate tab
           

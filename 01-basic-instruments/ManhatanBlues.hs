@@ -40,7 +40,7 @@ module ManhatanBlues where
 import Csound.Base
 
 piano :: (D, D) -> Sig
-piano (amp, cps) = once envelope * oscili (kr amp) (kr cps) timbre
+piano (amp, cps) = once envelope * oscili (sig amp) (sig cps) timbre
     where envelope = ifB (idur <* 0.2) sharpAttack exponEnv
           timbre   = ifB (cps <* 250) sin10 sin7 
               
@@ -51,17 +51,17 @@ piano (amp, cps) = once envelope * oscili (kr amp) (kr cps) timbre
           sin10 = sines [0.158, 0.316, 1, 1, 0.282, 0.112, 0.063, 0.079, 0.126, 0.071]
 
 -- chords:          
-c1 = [104, 175, 233, 277, 330]
-c2 = [207, 349, 440, 554]
-c3 = [104, 147, 165, 196, 233]
-c4 = [207, 294, 330, 392, 494]    
+ch1 = [104, 175, 233, 277, 330]
+ch2 = [207, 349, 440, 554]
+ch3 = [104, 147, 165, 196, 233]
+ch4 = [207, 294, 330, 392, 494]    
     
 section = stretch 0.4 $ line [
-    chord [note 1.66 0.45 c1, delay 0.5 $ note 1.16 0.4 c2],
-    note 0.34 0.24 c1,
-    note 1 0.5 c2,
-    note 1 0.6 c3,
-    note 1 0.45 c4]    
+    chord [note 1.66 0.45 ch1, delay 0.5 $ note 1.16 0.4 ch2],
+    note 0.34 0.24 ch1,
+    note 1 0.5 ch2,
+    note 1 0.6 ch3,
+    note 1 0.45 ch4]    
     where note dur amp xs = chord [dur *| temp (amp, x) | x <- xs]
       
 res = sco piano $ loop 4 section

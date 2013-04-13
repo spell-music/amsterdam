@@ -26,7 +26,7 @@ import Csound.Base
 
 instr :: (D, D, Tab, D, D, Tab, D, D) -> Sig
 instr (amp, cps, wave, rise, dec, attack, atss, atdec) = 
-    envlpx (kr amp) rise idur dec attack atss atdec * oscBy wave (kr cps)
+    envlpx (sig amp) rise idur dec attack atss atdec * oscBy wave (sig cps)
 
 note (dur, cps) (atss, atdec) = delay 1 $ dur *| temp (0.5, cps, sines [1], 0.2, 0.3, gp $ eexps [0.00195, 1], atss, atdec)
    

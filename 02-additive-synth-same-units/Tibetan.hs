@@ -19,7 +19,7 @@ import Csound.Base
 instr :: (D, D, D, D, D) -> Sig
 instr (amp, cps, off, rise, dec) = mean $ fmap partial $ 0 : offs ++ (fmap negate offs)
     where offs = [1 .. 4]
-          partial rat = linen (kr amp) rise idur dec * oscBy wave (kr $ cps + off * rat)   
+          partial rat = linen (sig amp) rise idur dec * oscBy wave (sig $ cps + off * rat)   
           wave = sines [0.3, 0, 0, 0, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
           
 res = sco instr $ chord $ fmap note [

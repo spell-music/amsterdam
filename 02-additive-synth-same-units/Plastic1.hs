@@ -26,12 +26,12 @@ import Csound.Base
 
 
 plastic :: Sig -> (D, D) -> Sig
-plastic e (amp, cps) = sum $ zipWith (\env fq -> env * osc (kr $ fq * cps)) envs fqs
+plastic e (amp, cps) = sum $ zipWith (\env fq -> env * osc (sig $ fq * cps)) envs fqs
     where ratios = [1, 0.2/67, 0.3/60, 0.4/57, 0.5/55, 0.6/54, 0.7/54]
           consts = [0.054, 0.049, 0.3, 0.409, 0.511, 0.596]  
           fqs    = [1 .. 7]
           strs   = [0.2, 0.4, 0.37, 0.23, 0.2, 0.18]         
-          envs   = zipWith3 (\str rat con -> str * (e * kr amp * rat + con)) strs ratios consts
+          envs   = zipWith3 (\str rat con -> str * (e * sig amp * rat + con)) strs ratios consts
        
 instr :: (D, D, D, D) -> Sig
 instr (amp, cps, rise, dec) = plastic e (amp, cps)

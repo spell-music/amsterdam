@@ -15,7 +15,7 @@ instr (amp, cps) = sum $ zipWith3 partial durs amps cpss
           amps = fmap ( / 11) [1, 0.67, 1.35, 1.80, 2.67, 1.67, 1.46, 1.33, 1.33, 0.75, 1.33]  
           cpss = [(* 0.56), ( + 1) . (* 0.56), ( * 0.92), (+ 1.7) . ( * 0.92), (* 1.19), (* 1.7), (* 2), (* 2.74), (* 3), (* 3.75), (* 4.07)]
           
-          partial d a c = env * osc (kr $ c cps)
+          partial d a c = env * osc (sig $ c cps)
             where env = expseg [a, idur, 0.00001]
 
 note dt amp cps = dt *| temp (amp, cps)

@@ -18,10 +18,10 @@ module Multiplier where
 import Csound.Base
 
 instr :: (D, D, Tab, D, Tab) -> Sig
-instr (amp, fqc, fc, fqm, fm) = kr amp * a1 * a2
+instr (amp, fqc, fc, fqm, fm) = sig amp * a1 * a2
     where env = once $ segs [0, 51, 1, 29, 0.9, 120, 0.8, 50, 0.6, 50, 0.5, 20, 0.3, 30, 0.1, 162, 0]
-          a1  = env * oscBy fc (kr fqc)  
-          a2  = oscBy fm (kr fqm)  
+          a1  = env * oscBy fc (sig fqc)  
+          a2  = oscBy fm (sig fqm)  
 
 f1 = sine
 f2 = sines [1, 1, 1]

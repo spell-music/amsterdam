@@ -10,7 +10,7 @@ import Csound.Base
 import Spectral1 hiding (main, instr, res)
 
 instr :: (D, D) -> Sig
-instr (amp, cps) = kr amp * fadeOut * env * osc (kr cps)
+instr (amp, cps) = sig amp * fadeOut * env * osc (sig cps)
     where env = once $ guardPoint $ eexps [1, 0.0001]
           fadeOut = linen 1 0 idur 0.25  
             

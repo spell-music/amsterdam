@@ -20,8 +20,8 @@ import Csound.Base
 
 instr :: (D, D, Tab, D) -> SE Sig
 instr (amp, cps, wave, fqr) = do
-    rnd <- randi 1 (kr fqr)
-    return $ linen (kr amp) rise idur dec * rnd * oscBy wave (kr cps)
+    rnd <- randi 1 (sig fqr)
+    return $ linen (sig amp) rise idur dec * rnd * oscBy wave (sig cps)
     where rise = 0.2
           dec  = 0.3  
 

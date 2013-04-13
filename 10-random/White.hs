@@ -7,7 +7,7 @@ module White where
 import Csound.Base
 
 instr :: D -> SE Sig
-instr amp = rand (linen (kr amp) rise idur dec)
+instr amp = rand (linen (sig amp) rise idur dec)
     where rise = 0.4
           dec  = 0.4  
 

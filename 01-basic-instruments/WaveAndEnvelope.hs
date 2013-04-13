@@ -41,7 +41,7 @@ import Csound.Base
 -- instrument
 
 envOsc :: (Iamp, Icps, Tab, Tab) -> Sig
-envOsc (amp, cps, oscTab, envTab) = once envTab * oscili (kr amp) (kr cps) oscTab
+envOsc (amp, cps, oscTab, envTab) = once envTab * oscili (sig amp) (sig cps) oscTab
 
 -- tables
 

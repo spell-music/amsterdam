@@ -20,9 +20,9 @@ import Csound.Base
 instr :: (D, D, D, D, D) -> SE Sig
 instr (amp, fq1, max1, fq2, max2) = do
     v   <- vibrato
-    let mod = dyn * (kr $ fqm * max1) * osc (kr fqm * v)
-        a1  = amp1 * (kr amp) * osc (mod + (kr fq1 * v))
-        a2  = amp2 * (kr amp) * 0.2 * osc ((mod * kr ratio) + (kr fq2 * v))
+    let mod = dyn * (sig $ fqm * max1) * osc (sig fqm * v)
+        a1  = amp1 * (sig amp) * osc (mod + (sig fq1 * v))
+        a2  = amp2 * (sig amp) * 0.2 * osc ((mod * sig ratio) + (sig fq2 * v))
     return $ a1 + a2 
     where 
         fqm = fq1

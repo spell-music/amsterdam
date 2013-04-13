@@ -10,8 +10,8 @@ import Csound.Base
 
 instr :: (D, D, Tab, Tab, D, D) -> SE Sig
 instr (amp, cps, wave, env, perc, randCps) = do
-    sig <- randi (kr $ perc * amp / 100) (kr randCps) 
-    return $ (sig + kr amp) * once env * oscBy wave (kr cps)
+    r <- randi (sig $ perc * amp / 100) (sig randCps) 
+    return $ (r + sig amp) * once env * oscBy wave (sig cps)
     
 note perc = delay 1 $ 1.5 *| temp (0.5, 1109, wave, env, perc, 40) 
     where wave = sines [1, 0.4, 0.2, 0.1, 0.1, 0.05]

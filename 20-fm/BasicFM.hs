@@ -14,13 +14,13 @@ envOsc :: Tab -> Tab -> Cps -> Sig
 envOsc env wave cps = once env * oscBy wave cps
 
 chown :: D -> D -> D -> Tab -> Tab -> (D, D) -> Sig
-chown imax nfq1 nfq2 fenv fdyn (amp, pch) = kr amp * envOsc fenv sine (fq1 + kr imax * fq2 * envOsc fdyn sine fq2)
-    where fq1  = kr $ nfq1 * cpspch pch  
-          fq2  = kr $ nfq2 * cpspch pch  
+chown imax nfq1 nfq2 fenv fdyn (amp, pch) = sig amp * envOsc fenv sine (fq1 + sig imax * fq2 * envOsc fdyn sine fq2)
+    where fq1  = sig $ nfq1 * cpspch pch  
+          fq2  = sig $ nfq2 * cpspch pch  
 
 instr :: (D, D, D, D) -> Sig
 instr (amp, cps1, max, cps2) = 
-    linen (kr amp) 0.1 idur 0.1 * osc (kr cps1 + kr max * osc (kr cps2))
+    linen (sig amp) 0.1 idur 0.1 * osc (sig cps1 + sig max * osc (sig cps2))
 
 note max cps2 = temp (0.5, 200, max, cps2)
 

@@ -37,9 +37,9 @@ instr1 (amp, rise, dec, fqc, fqm) = a1 * a2
 instr2 :: (D, D) -> Sig
 instr2 (amp, fq) = sig amp * once (guardPoint $ eexps [512, 1]) * osc (sig fq)
 
-i11 start fqc fqm = delay start $ stretch 0.6 $ temp (0.5, 0.01, 0.6, fqc, fqm)
+i11 start fqc fqm = delay start $ stretch 0.6 $ temp (0.2, 0.01, 0.6, fqc, fqm)
 
-i12 start dur rise fqc fqm = delay start $ stretch dur $ temp (0.5, rise, 1.2, fqc, fqm)
+i12 start dur rise fqc fqm = delay start $ stretch dur $ temp (0.2, rise, 1.2, fqc, fqm)
 
 sec1 = sco instr1 $ chord [         
     i11   0.5   424   1000,             -- -576   +1424 
@@ -67,5 +67,6 @@ sec2 = sco instr2 $ chord [
 res = chord [sec1, sec2]
 
 main = writeCsd "tmp.csd" res
+-- main = totem res
 
 

@@ -34,3 +34,4 @@ res = sco instr $ line [
     note f2 107 f1]
 
 main = writeCsd "tmp.csd" res
+-- main = totem res

@@ -23,10 +23,11 @@ baseInstr (amp7, fq1, amp2, amp4, fq5) = do
           f13 = partials [10, 16, 22, 23]  
 
 instr :: (D, D) -> SE Sig
-instr (amp, cps) = baseInstr (amp, cps, 0.8 * amp, 0.1 * cps, 0.3 * amp)
+instr (amp, cps) = baseInstr (amp, cps, 0.8 * amp, 0.3 * amp, 0.1 * cps)
 
 res = sco instr notes
 
 main = writeCsd "tmp.csd" res
+-- main = totem res
 
 

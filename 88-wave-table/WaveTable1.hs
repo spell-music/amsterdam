@@ -19,4 +19,5 @@ instr () = a1 * oscBy (setSize 513 $ esegs [1, 1]) 1
             
 res = sco instr $ temp ()
 
-main = writeCsd "tmp.csd" res
+-- main = writeCsd "tmp.csd" res
+main = totem res

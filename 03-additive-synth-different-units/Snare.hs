@@ -86,7 +86,7 @@ sec2 = chord $ fmap (note2 (0.5,  0.3, 0, 2.5)) [
     (3.6,    0.23,      15),
     (4,      0.23,      15)]
 
-note3 (fq1, amp2, amp4, fq5, fq7) (start, dur, amp) = note (amp, fq1, amp2, amp4, fq5, fq7) (start, dur)
+note3 (fq1, amp2, amp4, fq5, fq7) (start, dur, amp) = note (amp / 2000, fq1, amp2, amp4, fq5, fq7) (start, dur)
 
 sec3 = chord $ fmap (note3 (20, 0.4, 0.2, 4000, 1500)) [
     (0.4,   0.15,   1000),
@@ -108,10 +108,10 @@ sec3 = chord $ fmap (note3 (20, 0.4, 0.2, 4000, 1500)) [
     (4.20,  0.15,   800),
     (4.27,  0.15,   800),
     (4.33,  0.15,   800),
-    (4.40,  0.22,  1200)]
+    (4.40,  0.22,   900)]
 
 res = sco instr $ line [sec1, sec2, sec3]
 
 main = writeCsd "tmp.csd" res
-
+-- main = totem res
 

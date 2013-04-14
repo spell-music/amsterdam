@@ -49,3 +49,4 @@ res = sco instr $ line [
     i1   0.125   9.05]
 
 main = writeCsd "tmp.csd" res
+-- main = totem res

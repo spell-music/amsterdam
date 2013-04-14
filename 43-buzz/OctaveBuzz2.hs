@@ -21,5 +21,6 @@ note fqc = 2 *| temp (0.5, fqc)
 res = sco instr $ line $ fmap note fqcs
 
 main = writeCsd "tmp.csd" res
+-- main = totem res
 
 

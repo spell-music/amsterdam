@@ -23,7 +23,7 @@ instr (amp, fq1, max1, fq2, max2) = do
     let mod = dyn * (sig $ fqm * max1) * osc (sig fqm * v)
         a1  = amp1 * (sig amp) * osc (mod + (sig fq1 * v))
         a2  = amp2 * (sig amp) * 0.2 * osc ((mod * sig ratio) + (sig fq2 * v))
-    return $ a1 + a2 
+    return $ 0.5 * (a1 + a2)
     where 
         fqm = fq1
         ratio = max2 / max1
@@ -51,5 +51,6 @@ n = temp (0.5, 250, 2.66, 1500, 1.8)
 
 res = sco instr $ line [n, 2 *| n] 
 
-main = writeCsd "tmp.csd" res
+-- main = writeCsd "tmp.csd" res
+main = totem res
 

@@ -30,6 +30,7 @@ note fqr = line [temp (0.5, 400, sine, fqr), rest 1]
 res = sco instr $ line $ fmap note [80, 40, 20]
 
 main = writeCsd "tmp.csd" res
+-- main = totem res
 
 
 

@@ -17,7 +17,8 @@ envOsc env wave cps = once env * oscBy wave cps
 
 instr :: (D, D, D) -> Sig
 instr (amp, pch, imax) = sig amp * envOsc fenv sine (fq1 + amod)
-    where amod = fq2 * sig imin + sig (imax - imin) * fq2 * envOsc fdyn sine fq2
+    where adyn = fq2 * sig imin + sig (imax - imin) * fq2 * once fdyn
+          amod = adyn * osc fq2  
           fq1  = sig $ 3 * cpspch pch  
           fq2  = sig $ 2 * cpspch pch  
           imin = 2  
@@ -28,7 +29,7 @@ ns = [8.02, 8.04, 8.05, 8.07, 8.09, 8.11, 9.00]
 
 note x = 0.6 *| temp (0.5, x, 4)
 
-res = sco instr $ line $ fmap note ns
+res = stretch 0.4 $ sco instr $ line $ fmap note ns
 
 main = writeCsd "tmp.csd" res
-
+-- main = totem res

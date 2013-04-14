@@ -20,3 +20,4 @@ instr (amp, cps) = randi (linen (sig amp) rise idur dec) (sig cps)
 res = sco instr $ line $ fmap (temp . (0.5, )) [10000, 5000, 2500, 2000, 1000, 500, 250, 125, 50, 25]  
     
 main = writeCsd "tmp.csd" res
+-- main = totem res

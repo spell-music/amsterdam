@@ -29,5 +29,6 @@ res = sco instr $ line [
     line $ fmap note i2]
     
 main = writeCsd "tmp.csd" res
+-- main = totem res
 
 

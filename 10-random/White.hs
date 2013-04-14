@@ -13,5 +13,6 @@ instr amp = rand (linen (sig amp) rise idur dec)
 
 res = sco instr $ 4 *| temp 0.5
 
-main = writeCsd "tmp.csd" res
+-- main = writeCsd "tmp.csd" res
+main = totem res
 

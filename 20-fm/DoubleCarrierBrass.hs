@@ -14,7 +14,7 @@ module DoubleCarrierBrass where
 import Csound.Base
 
 instr :: (D, D, D, D) -> Sig
-instr (amp, fq1, max1, max2) = a1 + a2
+instr (amp, fq1, max1, max2) = 0.5 * (a1 + a2)
     where ftab = guardPoint $ segs [0, 85, 1, 85, 0.75, 258, 0.59, 85, 0]
           fqmod = fq1
           min = 2
@@ -28,11 +28,12 @@ instr (amp, fq1, max1, max2) = a1 + a2
           a1  = env * osc (sig fq1 + mod)  
           a2  = 2 * env * osc (sig fq2 + ((sig $ max2/max1) * mod))  
         
-note x = line [temp (0.5, x, 3, 1.5), rest 1]
+note x = line [temp (0.4, x, 3, 1.5), rest 1]
 
 res = sco instr $ line $ fmap note [300, 200, 400]
 
 main = writeCsd "tmp.csd" res
+-- main = totem res
 
 
 

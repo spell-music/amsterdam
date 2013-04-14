@@ -67,7 +67,7 @@ instr (amp, pch) = do
         formEnv = envlpx (sig fmtamp) 0.1 idur 0.08 fenv 1 0.01
 
         
-i1 start dur amp pch = delay start $ stretch dur $ temp (amp, pch)
+i1 start dur amp pch = delay start $ stretch dur $ temp (amp / 20000, pch)
 
 res = sco instr $ stretch (40/60) $ chord [
     -- p6 = 0 < ampfac < 1                  
@@ -85,4 +85,5 @@ res = sco instr $ stretch (40/60) $ chord [
     i1     7.4    0.5      12000    8.10,  
     i1     7.8    2        14000    9.01] 
 
-main = writeCsd "tmp.csd" res
+-- main = writeCsd "tmp.csd" res
+main = totem res

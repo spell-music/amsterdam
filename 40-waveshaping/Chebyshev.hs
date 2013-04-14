@@ -21,11 +21,11 @@ instr (amp, pch, tf) = a1 * env
     where a1  = tablei (4096 * osc (sig $ cpspch pch)) tf
           env = linen (sig amp) 0.085 idur 0.04
             
-chebs = setSize 4096 . chebs1 1 1
+chebs = setSize 8193 . chebs1 4096 1
 
-f88 = chebs [1]
-f89 = chebs [1, 1, 2]
-f90 = chebs [1, 0, 0, 0, 0, 0, 6, 5, 4]  
+f88 = chebs [1, 1]
+f89 = chebs [1, 1, 1, 2]
+f90 = chebs [1, 1, 0, 0, 0, 0, 0, 6, 5, 4]  
 
 note tab dur pch = dur *| temp (0.5, pch, tab)
 
@@ -57,5 +57,5 @@ res = sco instr $ line [
     i3   0.125   9.05]
 
 main = writeCsd "tmp.csd" res
-
+-- main = totem res
 

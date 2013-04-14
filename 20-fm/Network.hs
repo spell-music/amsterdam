@@ -38,7 +38,7 @@ instr (amp, fqc, fqm, max, (bege, begdyn, breakp', mid, end), rtv, left) = (mixS
 
 
 i start dur amp fqc fqm max beg begdyn breakp mid end rtv left = delay start $ stretch dur $
-    temp (amp, fqc, fqm, max, (beg, begdyn, breakp, mid, end), rtv, left)
+    temp (amp/8000, fqc, fqm, max, (beg, begdyn, breakp, mid, end), rtv, left)
 
 res = sco instr $ chord [
 --        start     idur      iamp       ifqc      ifqm     imax     ibeg      ibegkdyn    ibreakp  imid      iend      irtv      ileft
@@ -58,5 +58,6 @@ res = sco instr $ chord [
     i     14.30      0.69      3566       610       312       2.1     0.000    0.147        49     0.995      0         0.34      0.45]
     
 main = writeCsd "tmp.csd" res
+-- main = totem res
 
 

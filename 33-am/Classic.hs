@@ -34,11 +34,12 @@ instr (amp, fqc, fc, imod, fqm, fm) = a2
           env = a1 * once (guardPoint $ exps [1, 50, 5000, 462, 1])    
           a2  = env * oscBy fc (sig fqc)       
             
-n1 mod = temp (0.5, 400, sine, mod, 100, sine)
-n2 fqm = temp (0.5, 400, sine, 1,   fqm, sine)
+i1 mod = temp (0.5, 400, sine, mod, 100, sine)
+i2 fqm = temp (0.5, 400, sine, 1,   fqm, sine)
 
 res = sco instr $ line [
-    line $ fmap n1 [0, 0.2 .. 1],
-    line $ fmap n2 [150, 200, 300, 400, 800, 1200]]
+    line $ fmap i1 [0, 0.2 .. 1],
+    line $ fmap i2 [150, 200, 300, 400, 800, 1200]]
 
-main = writeCsd "tmp.csd" res
+-- main = writeCsd "tmp.csd" res
+main = totem res

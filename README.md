@@ -7,5 +7,5 @@
 
 ~~~
 > cabal update
-> cabal install csound-expression
+> cabal install temporal-csound
 ~~~

@@ -12,7 +12,7 @@ The difference between RANDI and RANDH is clearly audible. Compare with 10_02_1.
 -}
 module Hold where
 
-import Csound.Base
+import Csound
 
 instr :: (D, D) -> SE Sig
 instr (amp, cps) = randh (linen (sig amp) rise idur dec) (sig cps)

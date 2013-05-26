@@ -5,7 +5,7 @@ We tested a couple of rise and decay values for LINEN. The last setting of irise
 -}
 module Linen where
 
-import Csound.Base
+import Csound
 
 instr :: (D, D, Tab, D, D) -> Sig
 instr (amp, cps, wave, rise, dec) = linen (sig amp) rise idur dec * oscBy wave (sig cps)

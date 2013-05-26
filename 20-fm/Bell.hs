@@ -8,7 +8,7 @@ the timbre in a subtle manner (Chowning 1973).
 -}
 module Bell where
 
-import Csound.Base
+import Csound
 import BasicFM(chown)
 
 envOsc :: Tab -> Tab -> Cps -> Sig

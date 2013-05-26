@@ -9,14 +9,14 @@ routines in Music 5). (Risset 1969: #250)
 -}
 module ChoralReedy where
 
-import Csound.Base
+import Csound
 import qualified Data.List as L(transpose)
 
 reedy :: (D, D, Tab) -> Sig
 reedy (amp, cps, env) = once env * oscili (sig amp) (sig cps) wave
     where wave = sines [0.4, 0.3, 0.35, 0.5, 0.1, 0.2, 0.15, 0, 0.02, 0.05, 0.03]
             
-envelope = esegs [0, 1, 0.8, 0.6, 0.7, 0.6, 0]   -- smooth: reed
+envelope = elins [0, 1, 0.8, 0.6, 0.7, 0.6, 0]   -- smooth: reed
 
 amp = 0.5
 

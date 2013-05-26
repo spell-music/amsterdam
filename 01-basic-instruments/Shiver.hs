@@ -6,7 +6,7 @@ design, in contrast to instrument Scary.hs, where the LFO had complicated the so
 -}
 module Shiver where
 
-import Csound.Base
+import Csound
 
 instr :: (D, D, Tab, Tab, D, D) -> SE Sig
 instr (amp, cps, wave, env, perc, randCps) = do
@@ -15,7 +15,7 @@ instr (amp, cps, wave, env, perc, randCps) = do
     
 note perc = delay 1 $ 1.5 *| temp (0.5, 1109, wave, env, perc, 40) 
     where wave = sines [1, 0.4, 0.2, 0.1, 0.1, 0.05]
-          env  = segs [0, 1, 0.8, 2, 0.9, 1, 0.7, 3, 0.2, 3, 0] 
+          env  = lins [0, 1, 0.8, 2, 0.9, 1, 0.7, 3, 0.2, 3, 0] 
 
 res = sco instr $ line $ fmap note [1, 50, 80, 200, 300]
 

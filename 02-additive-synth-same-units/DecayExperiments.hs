@@ -14,17 +14,17 @@ little more than was the case earlier on. (Risset 1969: #300)
 -}
 module DecayExperiments where
 
-import Csound.Base
+import Csound
 
 instr :: (D, Tab, D, Tab) -> Sig
 instr (amp, env, cps, wave) = sig amp * once env * oscBy wave (sig cps)
 
 waves = [
-    segs [0, 10, 1, 20, 1, 20, -1, 20, -1, 10, 0],
+    lins [0, 10, 1, 20, 1, 20, -1, 20, -1, 10, 0],
     sines [1, 0.5, 0.3, 0.2, 0.15, 0.12],
     sines [1, 0.2, 0.05]]
     
-linEnv = esegs [1, 0]
+linEnv = elins [1, 0]
 expEnv = guardPoint $ eexps [256, 1]
 
 ch env cs waves = line [chord $ zipWith3 (note env) [(0.1, 0.5), (1.8, 0.2), (3, 0.1)] cs waves, rest 1]

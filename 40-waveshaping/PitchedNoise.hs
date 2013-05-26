@@ -18,7 +18,7 @@ while it gets more pitched in the high frequency range (second section).
 -}
 module PitchedNoise where
 
-import Csound.Base
+import Csound
 
 instr :: (D, D) -> Sig2
 instr (amp, pch) = (a13, a13 * a2)
@@ -36,7 +36,7 @@ instr (amp, pch) = (a13, a13 * a2)
           a4  = a3 * osc (fq * 0.7071)    
 
 -- envelope for sinus at ifq
-f31 = setSize 512 $ segs [0, 16, 0.2, 16, 0.38, 16, 0.54, 16, 0.68, 16, 0.8, 16, 0.9, 16, 0.98, 8, 1, 2, 1, 6, 0.96,
+f31 = setSize 512 $ lins [0, 16, 0.2, 16, 0.38, 16, 0.54, 16, 0.68, 16, 0.8, 16, 0.9, 16, 0.98, 8, 1, 2, 1, 6, 0.96,
         64, 0.8313, 32, 0.5704, 80, 0.164, 48, 0.0521, 44, 0.0159, 20, 0.0092, 64, 0.005, 32, 0]
 
 i1 dur pch = dur *| temp (0.5, pch)

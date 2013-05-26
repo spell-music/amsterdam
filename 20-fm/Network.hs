@@ -22,7 +22,7 @@ mathematical relations between them. The result is written to a score file.
 -}
 module Network where
 
-import Csound.Base
+import Csound
 
 instr :: (D, D, D, D, (D, D, D, D, D), D, D) -> Sig2
 instr (amp, fqc, fqm, max, (bege, begdyn, breakp', mid, end), rtv, left) = (mixSig * sig left, mixSig * sig (1 - left))

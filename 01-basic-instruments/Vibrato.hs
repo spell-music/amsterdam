@@ -24,7 +24,7 @@ In the third section, the LFO's frequency is varied from 1 to 5 Hz.
 -}
 module Vibrato where
 
-import Csound.Base
+import Csound
 
 instr :: (D, D, Tab, Tab, D) -> Sig
 instr (amp, cps, wave, env, lfoCps) = sig amp * once env * oscBy wave (sig cps) * (kr $ osc (sig lfoCps))
@@ -36,7 +36,7 @@ waves = fmap sines [
     [1, 0.2, 0.08, 0.07],               -- four harmonics
     [1, 0.4, 0.2, 0.1, 0.1, 0.05]]      -- six harmonics
 
-envelopes = fmap segs [  
+envelopes = fmap lins [  
     [0, 1, 0, 49, 0.2, 90,  0.6, 40, 0.99, 25, 0.9, 45, 0.5, 50, 0.25, 50, 0.12, 50, 0.06, 50, 0.02, 62, 0],
     [0, 1, 0, 49, 0.2, 100, 0.6, 50, 0.99, 150, 0.2, 162, 0],
     [0, 1, 0, 49, 0.2, 200, 0.5, 100, 0.2, 162, 0],

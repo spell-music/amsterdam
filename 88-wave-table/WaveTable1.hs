@@ -10,10 +10,10 @@ The run will produce 513 values for the specified function. (Risset 1969: #513)
 -}
 module WaveTable1 where
 
-import Csound.Base
+import Csound
 
 instr :: () -> Sig
-instr () = a1 * oscBy (setSize 513 $ esegs [1, 1]) 1
+instr () = a1 * oscBy (setSize 513 $ elins [1, 1]) 1
     where a1 = linseg [1, idur, 513]
           a2 = exp (-4.8283 * (1 - cos (2 * pi * (((a1 - 1) - 256) / 512))))
             

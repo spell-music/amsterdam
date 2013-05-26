@@ -15,11 +15,11 @@ Three sample notes are played.
 -}
 module Multiplier where
 
-import Csound.Base
+import Csound
 
 instr :: (D, D, Tab, D, Tab) -> Sig
 instr (amp, fqc, fc, fqm, fm) = sig amp * a1 * a2
-    where env = once $ segs [0, 51, 1, 29, 0.9, 120, 0.8, 50, 0.6, 50, 0.5, 20, 0.3, 30, 0.1, 162, 0]
+    where env = once $ lins [0, 51, 1, 29, 0.9, 120, 0.8, 50, 0.6, 50, 0.5, 20, 0.3, 30, 0.1, 162, 0]
           a1  = env * oscBy fc (sig fqc)  
           a2  = oscBy fm (sig fqm)  
 

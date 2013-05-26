@@ -22,7 +22,7 @@ Examples:
 -}
 module Envlpx where
 
-import Csound.Base
+import Csound
 
 instr :: (D, D, Tab, D, D, Tab, D, D) -> Sig
 instr (amp, cps, wave, rise, dec, attack, atss, atdec) = 

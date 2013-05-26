@@ -27,11 +27,11 @@ f31 multiplied by itself. The general design is additive. (Risset 1969: #500)
 -}
 module Spectral1 where
 
-import Csound.Base 
+import Csound 
 
 instr :: (D, D) -> Sig
 instr (amp, cps) = sig amp * env * env * osc (sig cps)
-    where env = once (esegs [0, 1, 0])
+    where env = once (elins [0, 1, 0])
     
 
 ch totalDur dts cs = chord $ zipWith note dts cs

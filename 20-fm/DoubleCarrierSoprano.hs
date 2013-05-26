@@ -9,7 +9,7 @@ morefiles/chowning.orc; Vercoe 1993: morefiles/ sopink.orc)
 -}
 module DoubleCarrierSoprano where
 
-import Csound.Base
+import Csound
 
 instr :: (D, D) -> SE Sig
 instr (amp, pch) = do
@@ -28,10 +28,10 @@ instr (amp, pch) = do
 
         -- ipoint points at p5-dependent location of a table with 512 locs
         point  = 511.999 * (caroct - base) / range
-        segs'  = setSize 513 . segs
-        lookAt = tableD point . segs'
-        fenv   = segs' [0, 256, 0.2, 256, 1]
-        fport  = segs' [-1, 200, 1, 100, 0, 212, 0]
+        lins'  = setSize 513 . lins
+        lookAt = tableD point . lins'
+        fenv   = lins' [0, 256, 0.2, 256, 1]
+        fport  = lins' [-1, 200, 1, 100, 0, 212, 0]
         fmthz  = lookAt [1, 80, 1, 200, 0.9, 200, 0.6, 32]
         fmtfac = lookAt [0.4, 100, 0.2, 412, 1]
         fmtndx = lookAt [1, 100, 0.5, 80, 0.25, 132, 0.5, 100]

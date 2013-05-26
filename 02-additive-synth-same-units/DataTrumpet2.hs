@@ -17,14 +17,14 @@ published by Moorer: cello, trumpet and clarinet (Moorer 1985).
 
 module DataTrumpet2 where
 
-import Csound.Base
+import Csound
 
 instr :: (D, D, Tab, D) -> SE Sig
 instr (amp, cps, env, fundr) = do
     rnd <- randi (sig $ fundr * 0.04) 20
     return $ sig amp * once env * osc (sig cps + rnd)
 
-envelopes = fmap segs [
+envelopes = fmap lins [
     [0, 20, 0.001,  32,  0.282,  28,  0.112, 778,  0.178, 88,  0.159, 54,  0.008, 24,  0.001],
     [0, 38, 0.001, 830,  0.5,    40,  0.355,  72,  0.016, 44,  0.001],
     [0, 46, 0.001, 824,  0.56,  144,  0.001],

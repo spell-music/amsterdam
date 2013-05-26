@@ -10,7 +10,7 @@ in main group 15.
 -}
 module Limited where
 
-import Csound.Base
+import Csound
 
 instr :: (D, D) -> SE Sig
 instr (amp, cps) = randi (linen (sig amp) rise idur dec) (sig cps)

@@ -7,7 +7,7 @@ Notes of various duration and frequency.
 -}
 module FiveFrequencies where
 
-import Csound.Base
+import Csound
 
 
 

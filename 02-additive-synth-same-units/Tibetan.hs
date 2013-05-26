@@ -14,7 +14,7 @@ like the attack of a string instrument. The score fragment is from 'Mutations'.
 -}
 module Tibetan where
 
-import Csound.Base 
+import Csound 
 
 instr :: (D, D, D, D, D) -> Sig
 instr (amp, cps, off, rise, dec) = mean $ fmap partial $ 0 : offs ++ (fmap negate offs)

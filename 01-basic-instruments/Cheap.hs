@@ -14,19 +14,19 @@ The bad cutoffs can be eliminated by supplying an envelope. (Risset 1969: #511)
 -}
 module Cheap where
 
-import Csound.Base
+import Csound
 
 instr :: (Iamp, Icps, Icps, Icps) -> SE Sig
 instr (amp, randCps, cps, lfoCps) = do
     env <- randi (sig amp) (sig randCps)
     return $ env * oscBy (sines [1]) (sig cps * oscBy twoOctsDown (sig lfoCps))
-    where twoOctsDown = segs [0.999, 20, 0.999, 500, 0.235, 20, 0.235]
+    where twoOctsDown = lins [0.999, 20, 0.999, 500, 0.235, 20, 0.235]
 
 res = sco instr $ delay 1 $ chord [
     6.5 *| temp (0.5, 80, 1000, 3),
     delay 2 $ 6.5 *| temp (0.5, 150, 750, 3)]
     
-main = writeCsd "tmp.csd" res
--- main = totem res
+--main = writeCsd "tmp.csd" res
+main = totem res
     
     

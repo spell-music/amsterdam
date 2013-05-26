@@ -22,7 +22,7 @@ page 46. (Risset 1969: #210)
 -}
 module Plastic1 where
 
-import Csound.Base
+import Csound
 
 
 plastic :: Sig -> (D, D) -> Sig

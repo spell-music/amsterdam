@@ -8,7 +8,7 @@ c:m ratios and modulation indexes on a set of short notes.
 -}
 module BasicFM where
 
-import Csound.Base
+import Csound
 
 envOsc :: Tab -> Tab -> Cps -> Sig
 envOsc env wave cps = once env * oscBy wave cps

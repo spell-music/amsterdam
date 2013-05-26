@@ -13,7 +13,7 @@ can doubtlessly be put to refined use in other contexts.
 -}
 module Cello where
 
-import Csound.Base
+import Csound
 
 instr :: (D, D, D, D, D, D) -> Sig
 instr (amp, pch, rise, dec, vibwth, vibrte) = undefined -- timout  ???

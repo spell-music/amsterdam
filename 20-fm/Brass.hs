@@ -9,7 +9,7 @@ variety of timbres is possible. (Chowning 1973)
 -}
 module Brass where
 
-import Csound.Base
+import Csound
 import BasicFM(chown)
 
 instr :: (D, D) -> Sig
@@ -19,7 +19,7 @@ instr = chown imax fq1 fq2 fenv fdyn
           fq2  = 1
           fenv = ft
           fdyn = ft
-          ft   = guardPoint $ segs [0, 80, 1, 80, 0.85, 290, 0.8, 63, 0]  
+          ft   = guardPoint $ lins [0, 80, 1, 80, 0.85, 290, 0.8, 63, 0]  
 
 ns = [8.02, 8.04, 8.05, 8.07, 8.09, 8.11, 9.00]
 

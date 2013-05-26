@@ -7,7 +7,7 @@ morefiles/risset2.orc; Vercoe 1993: morefiles/drum.orc)
 -}
 module PitchedDrum1 where
 
-import Csound.Base
+import Csound
 import qualified Snare as S(instr)
 
 instr :: (D, D) -> SE Sig

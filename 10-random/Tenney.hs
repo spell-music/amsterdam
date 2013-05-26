@@ -16,7 +16,7 @@ in his 'Noise Study'. (Dodge 1985: p. 93)
 -}
 module Tenney where
 
-import Csound.Base
+import Csound
 
 instr :: (D, D, Tab, D) -> SE Sig
 instr (amp, cps, wave, fqr) = do

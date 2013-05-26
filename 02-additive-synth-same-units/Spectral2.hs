@@ -6,7 +6,7 @@ else remains unchanged. (Risset 1969: #501)
 -}
 module Spectral2 where
 
-import Csound.Base
+import Csound
 import Spectral1 hiding (main, instr, res)
 
 instr :: (D, D) -> Sig

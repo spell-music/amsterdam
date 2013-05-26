@@ -15,7 +15,7 @@ Use other audio soundfiles as well.
 -}
 module Comparison where
 
-import Csound.Base
+import Csound
 
 instr1 :: (D, D) -> Sig
 instr1 (amp, cps) = pluck (sig amp) (sig cps) buf ft meth

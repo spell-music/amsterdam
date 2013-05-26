@@ -26,13 +26,13 @@ overlapping score calls. (Risset 1969: #550; Vercoe 1993: morefiles/risset4.orc)
 -}
 module Articulation where
 
-import Csound.Base
+import Csound
 
 instr1 :: (D, D, D, D, D) -> Sig
 instr1 (amp, rise, dec, fqc, fqm) = a1 * a2
     where env = envlpx (sig amp) rise (1 / idur) dec (guardPoint $ eexps [0.01, 1]) 1 0.01
           a1  = env * osc (sig fqc)  
-          a2  = oscBy (segs [0, 42, 1, 172, 1, 84, -1, 172, -1, 42, 0]) (sig fqm)  
+          a2  = oscBy (lins [0, 42, 1, 172, 1, 84, -1, 172, -1, 42, 0]) (sig fqm)  
             
 instr2 :: (D, D) -> Sig
 instr2 (amp, fq) = sig amp * once (guardPoint $ eexps [512, 1]) * osc (sig fq)

@@ -4,7 +4,7 @@ This instrument generates 4 seconds of white noise.
 -}
 module White where
 
-import Csound.Base
+import Csound
 
 instr :: D -> SE Sig
 instr amp = rand (linen (sig amp) rise idur dec)

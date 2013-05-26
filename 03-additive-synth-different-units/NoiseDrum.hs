@@ -9,7 +9,7 @@ tone for the second group of three notes. (Risset 1969: #410 sec 1 & 2)
 -}
 module NoiseDrum where
 
-import Csound.Base
+import Csound
 
 envOsc :: Tab -> Tab -> Cps -> Sig
 envOsc env wave cps = once env * oscBy wave cps

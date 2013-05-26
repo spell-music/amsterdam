@@ -12,7 +12,7 @@ module gives a sinus glissando contour. (Risset 1969: #510)
 -}
 module Chaos where
 
-import Csound.Base
+import Csound
 
 modOsc :: D -> D -> D -> Tab -> Sig
 modOsc amp cps rate wave = sig amp * osc (sig cps * oscBy wave (sig rate))
@@ -25,7 +25,7 @@ instr (a1, fqr, a2, a3, a4) = do
     return $ mean $ zipWith3 phi [1, r, 1, 1] [a1, a2, a3, a4] envelopes  
     where phi m (amp, cps, rate) tab = m * modOsc amp cps rate tab
           
-envelopes = fmap segs [
+envelopes = fmap lins [
     [0.99, 25, 0.99, 206, 0.318, 50, 0.318, 206, 0.99, 25, 0.99],
     [0.377, 256, 0.99, 256, 0.377],
     [0.5, 15, 0.5, 226, 0.9, 30, 0.9, 226, 0.5, 15, 0.5],

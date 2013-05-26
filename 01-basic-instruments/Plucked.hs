@@ -18,7 +18,7 @@ and a long exponential decay. (Risset 1969: #250)
 -}
 module Plucked where
 
-import Csound.Base
+import Csound
 
 plucked :: (D, D, D) -> Sig
 plucked (amp, cps, dec) = oscili (envlpx (sig amp) 0.01 idur dec env 1 0.01) (sig cps) wave

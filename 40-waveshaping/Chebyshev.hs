@@ -14,7 +14,7 @@ set to int(table length/2).
 -}
 module Chebyshev where
 
-import Csound.Base
+import Csound
 
 instr :: (D, D, Tab) -> Sig
 instr (amp, pch, tf) = a1 * env

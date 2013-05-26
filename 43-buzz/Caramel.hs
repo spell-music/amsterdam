@@ -6,7 +6,7 @@ the same sequence as the two instruments before.
 -}
 module Caramel where
 
-import Csound.Base
+import Csound
 
 instr :: (D, D, D) -> Sig
 instr (amp, fqc, nH) = buzz env (sig fqc) (sig nH) sine

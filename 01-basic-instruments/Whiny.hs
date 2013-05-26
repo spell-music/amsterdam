@@ -29,7 +29,7 @@ F38 descends two octaves, f39 ca. a sixth. (Risset 1969: #100, Risset 1969: #511
 -}
 module Whiny where
 
-import Csound.Base
+import Csound
 
 instr :: (Icps, Tab, D, Tab, Iamp, Tab) -> Sig
 instr (cps, wave, lfoRate, lfoShape, amp, env) = 
@@ -38,18 +38,18 @@ instr (cps, wave, lfoRate, lfoShape, amp, env) =
 waves = [
     sines [1, 0.4, 0.2, 0.1, 0.1, 0.05],        -- six harmonics
     sines [1],                                  -- sinus
-    segs [0, 0.25, 1, 0.5, -1, 0.25, 0]]        -- sawtooth
+    lins [0, 0.25, 1, 0.5, -1, 0.25, 0]]        -- sawtooth
 
-envelope = segs [0, 1, 0, 79, 0.5, 60, 0.5, 20, 0.99, 120, 0.4, 140, 0.6, 92, 0]
+envelope = lins [0, 1, 0, 79, 0.5, 60, 0.5, 20, 0.99, 120, 0.4, 140, 0.6, 92, 0]
 
 -- pitch control functions (LFO)
-lfos = fmap esegs [
+lfos = fmap elins [
     [0.895, 0.99],                                  -- 10% rise
     [1, 1],                                         -- 0% rise
     [0.99, 0.99],                                   -- 0% rise
     [1, 0.5],                                       -- oct down
     [1, 1, 0.8, 0.85, 0.7, 0.2]]                    -- more complex
-   ++ fmap segs [
+   ++ fmap lins [
     [0.999, 1, 0.999, 8,  0.85,  1, 0.85],          -- third down
     [0.999, 1, 0.999, 20, 0.235, 1, 0.235],         -- two octs down
     [0.999, 1, 0.999, 20, 0.06,  1, 0.06],          -- sixth down

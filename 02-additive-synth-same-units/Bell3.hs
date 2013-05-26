@@ -7,7 +7,7 @@ value of EXPON to continue on in the same direction (here: iamp = 1).
 -}
 module Bell3 where
 
-import Csound.Base
+import Csound
 
 instr :: (D, D) -> Sig
 instr (amp, cps) = sum $ zipWith3 partial durs amps cpss

@@ -11,7 +11,7 @@ In the third section, we used a larger internal buffer: ibuf is 1024.
 -}
 module LinePluck where
 
-import Csound.Base
+import Csound
 
 instr :: (D, D, D, Tab) -> Sig
 instr (amp, cps, buf, ft) = sig amp * linseg [1, 0.8 * idur, 1, 0.2 * idur, 0.0001] 

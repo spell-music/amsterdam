@@ -11,11 +11,11 @@ relation to ifq1. (Chowning 1973; Vercoe 1993: morefiles/chowning.orc)
 -}
 module DoubleCarrierBrass where
 
-import Csound.Base
+import Csound
 
 instr :: (D, D, D, D) -> Sig
 instr (amp, fq1, max1, max2) = 0.5 * (a1 + a2)
-    where ftab = guardPoint $ segs [0, 85, 1, 85, 0.75, 258, 0.59, 85, 0]
+    where ftab = guardPoint $ lins [0, 85, 1, 85, 0.75, 258, 0.59, 85, 0]
           fqmod = fq1
           min = 2
           form = 2100

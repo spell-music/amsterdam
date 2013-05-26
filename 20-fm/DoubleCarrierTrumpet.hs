@@ -15,7 +15,7 @@ module DoubleCarrierTrumpet where
 
 import Control.Applicative(liftA2)
 
-import Csound.Base
+import Csound
 
 instr :: (D, D, D, D, D) -> SE Sig
 instr (amp, fq1, max1, fq2, max2) = do
@@ -38,7 +38,7 @@ instr (amp, fq1, max1, fq2, max2) = do
         width = linseg [0, 0.6, vibwidth, idur - 0.6 - 0.2, vibwidth, 0.2, 0]        
         v1 = randi randev fqr
         v2 = width * osc vibrate
-        v3 = portdev * once (skipNorm $ segs [-1, 150, 0.1, 110, 0, 252, 0]) 
+        v3 = portdev * once (skipNorm $ lins [-1, 150, 0.1, 110, 0, 252, 0]) 
         vibrato  = fmap (\x -> (1 + x) * (1 + v2)  * (1 + v3)) v1        
         
         -- double-carrier, envelopes

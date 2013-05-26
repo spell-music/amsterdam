@@ -25,21 +25,21 @@ one hears how the timbre melts. The remaining two section play a dominant
 -}
 module Melted where
 
-import Csound.Base
+import Csound
 
 instr :: (D, D, Tab) -> Sig 
 instr (amp, pch, tf) = sig amp * tablei (a1 + 256) tf
     where a1 = linen 255 0.1 idur 0.5 * osc (sig $ cpspch pch)
 
-segs' = setSize 512 . skipNorm . segs
+lins' = setSize 512 . skipNorm . lins
 
 tfms = [
     -- f(x) = x
-    segs' [-1, 512, 1], 
+    lins' [-1, 512, 1], 
     -- linear discontinuous
-    segs' [-1, 256, 0, 50, 0.2, 1, 0, 205, 1],
+    lins' [-1, 256, 0, 50, 0.2, 1, 0, 205, 1],
     -- linear with sharp points
-    segs' [0, 103, -0.2, 103, -1, 100, 1, 206, 0],
+    lins' [0, 103, -0.2, 103, -1, 100, 1, 206, 0],
     -- even: f(x) = x**2
     setSize 513 $ polys (-1) 1 [0, 0, 1],
     -- odd: f(x) = x**3

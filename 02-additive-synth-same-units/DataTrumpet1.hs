@@ -10,7 +10,7 @@ fluctuations is set to 6% of the fundamental frequency for all partials. (Risset
 module DataTrumpet1 where
 
 import Data.List(splitAt)
-import Csound.Base
+import Csound
 
 instr :: (D, D, D, D, D) -> SE Sig
 instr (amp, cps, fundr, rise, dec) = do

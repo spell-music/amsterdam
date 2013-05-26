@@ -37,14 +37,14 @@ The last option is covered by the exponential envelope f51 and a
 
 module ManhatanBlues where
 
-import Csound.Base
+import Csound
 
 piano :: (D, D) -> Sig
 piano (amp, cps) = once envelope * oscili (sig amp) (sig cps) timbre
     where envelope = ifB (idur <* 0.2) sharpAttack exponEnv
           timbre   = ifB (cps <* 250) sin10 sin7 
               
-          sharpAttack = segs [0, 1, 0.99, 20, 0.4, 20, 0.2, 10, 0]
+          sharpAttack = lins [0, 1, 0.99, 20, 0.4, 20, 0.2, 10, 0]
           exponEnv    = guardPoint $ exps [0.0156, 1, 1, 350, 0.0156] 
           
           sin7  = sines [1, 0.282, 0.089, 0.1, 0.071, 0.089, 0.050]
@@ -68,5 +68,6 @@ res = sco piano $ loop 4 section
 
 main = writeCsd "tmp.csd" res
 -- main = totem res
+
 
 

@@ -7,7 +7,7 @@ foldover components.
 -}
 module OctaveBuzz1 where
 
-import Csound.Base
+import Csound
 
 instr :: (D, D) -> Sig
 instr (amp, fqc) = buzz env (sig fqc) nH sine

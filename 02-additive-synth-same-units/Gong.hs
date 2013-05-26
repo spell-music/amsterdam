@@ -18,7 +18,7 @@ each other to produce beats. (Risset 1969: #420)
 -}
 module Gong where
 
-import Csound.Base
+import Csound
 
 instr :: (D, D) -> Sig
 instr (amp, cps) = sig amp * fadeOut * once (guardPoint $ eexps [128, 1]) * osc (sig cps)

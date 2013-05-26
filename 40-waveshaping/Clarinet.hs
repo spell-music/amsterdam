@@ -15,10 +15,10 @@ increasing in strength and number as the LINEN value exceeds 56.
 -}
 module Clarinet where
 
-import Csound.Base
+import Csound
 
 instr :: (D, D) -> Sig
-instr (amp, pch) = sig amp * tablei (256 + a1) (setSize 512 $ segs [-1, 200, -0.5, 112, 0.5, 200, 1])
+instr (amp, pch) = sig amp * tablei (256 + a1) (setSize 512 $ lins [-1, 200, -0.5, 112, 0.5, 200, 1])
     where env = linen 255 0.085 idur dec
           dec = ifB (idur >* 0.75) 0.64 (idur - 0.085)
           a1  = env * osc (sig $ cpspch pch)  

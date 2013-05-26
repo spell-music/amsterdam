@@ -24,7 +24,7 @@ main group 01 and not to main group 33.
 -}
 module Classic where
 
-import Csound.Base
+import Csound
 
 instr :: (D, D, Tab, D, D, Tab) -> Sig
 instr (amp, fqc, fc, imod, fqm, fm) = a2

@@ -26,7 +26,7 @@ In section 3 the snares return with a rhythmic pattern.
 -}
 module Snare where
 
-import Csound.Base
+import Csound
 
 envOsc :: Tab -> Tab -> Cps -> Sig
 envOsc env wave cps = once env * oscBy wave cps

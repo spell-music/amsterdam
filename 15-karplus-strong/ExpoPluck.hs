@@ -6,7 +6,7 @@ tables. The noises' bandwidth descends from 10000 Hz to 25 Hz in each section.
 -}
 module ExpoPluck where
 
-import Csound.Base
+import Csound
 
 instr :: (D, D, D, Tab) -> Sig
 instr (amp, cps, buf, ft) = sig amp * expseg [1, 0.8 * idur, 1, 0.2 * idur, 0.0001] 

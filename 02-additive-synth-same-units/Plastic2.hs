@@ -27,7 +27,7 @@ particular design). (Risset 1969: #210)
 -}
 module Plastic2 where
 
-import Csound.Base
+import Csound
 import Plastic1(plastic)
 
 instr :: (D, D, D, D) -> Sig

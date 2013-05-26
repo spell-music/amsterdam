@@ -12,7 +12,7 @@ iwidth to 0.
 -}
 module Callas where
 
-import Csound.Base
+import Csound
 
 instr :: (Iamp, Icps, Tab, Iamp, Icps, Tab) -> Sig
 instr (amp, cps, wave, width, rate, lfoShape) = env * oscBy wave lfo

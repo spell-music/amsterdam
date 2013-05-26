@@ -13,13 +13,13 @@ decaying to 2(**-13)=1/8192. (Risset 1969: #300)
 -}
 module Decay where
 
-import Csound.Base
+import Csound
 
 instr :: (D, D, Tab, Tab) -> Sig
 instr (amp, cps, wave, env) = once env * oscili (sig amp) (sig cps) wave
 
 envelopes = [
-    esegs [1, 0],
+    elins [1, 0],
     guardPoint $ eexps [8192, 1]]
 
 waves = fmap sines [

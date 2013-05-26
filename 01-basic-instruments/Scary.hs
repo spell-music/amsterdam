@@ -15,7 +15,7 @@ and the complete flute-like instrument is classified as 80_01_1. (Risset 1969: #
 -}
 module Scary where
 
-import Csound.Base 
+import Csound 
 
 instr :: (Iamp, Icps, Tab, Tab, Icps, D, Icps) -> SE Sig
 instr (amp, cps, wave, env, lfoCps, perc, randCps) = do
@@ -24,7 +24,7 @@ instr (amp, cps, wave, env, lfoCps, perc, randCps) = do
     
 note perc frq = delay 1 $ 1.5 *| temp (0.5, 1109, wave, env, 4, perc, frq)
     where wave = sines [1, 0.4, 0.2, 0.1, 0.1, 0.05]
-          env  = segs [0, 1, 0.8, 2, 0.9, 1, 0.7, 3, 0.2, 3, 0] 
+          env  = lins [0, 1, 0.8, 2, 0.9, 1, 0.7, 3, 0.2, 3, 0] 
           
 res = sco instr $ line [ note perc frq | frq <- [40, 110], perc <- [1, 50, 80] ]
 

@@ -10,7 +10,7 @@ index is kept between 4 and 2 to control the spectral bandwidth.
 -}
 module Clarinet where
 
-import Csound.Base
+import Csound
 
 envOsc :: Tab -> Tab -> Cps -> Sig
 envOsc env wave cps = once env * oscBy wave cps

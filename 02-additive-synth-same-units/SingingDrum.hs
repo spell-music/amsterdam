@@ -29,7 +29,7 @@ we prefer to focus on the technical parallelism of the design.
 -}
 module SingingDrum where
 
-import Csound.Base
+import Csound
 
 instr :: ((Iamp, Icps), (Iamp, Icps), (Iamp, Icps), Tab, D, (D, D), (D, D), (D, D)) -> Sig
 instr (str1, str2, str3, pcf, startval, attDec1, attDec2, attDec3) =
@@ -51,9 +51,9 @@ params1 = [
 params2 = zip waves [0, 0, 0, 0.9]
 
 waves = [
-    esegs [1, 1],       -- steady state
-    esegs [0.85, 1],    -- increasing 3rd
-    esegs [1, 0.85],    -- decreasing 3rd
+    elins [1, 1],       -- steady state
+    elins [0.85, 1],    -- increasing 3rd
+    elins [1, 0.85],    -- decreasing 3rd
     sines [1]]          -- up and down & start + 0.9
 
 res = sco instr $ line [

@@ -17,7 +17,7 @@ to 1 before rescaling. (Vercoe 1993: morefiles/risset3.orc)
 -}
 module Bell2 where
 
-import Csound.Base
+import Csound
 
 instr :: (D, D) -> Sig
 instr (amp, cps) = sum $ zipWith3 partial durs amps cpss

@@ -4,7 +4,7 @@ A version with RAND instead of RANDI sounds very different! The noise quality is
 -}
 module PitchedDrum2 where
 
-import Csound.Base
+import Csound
 import PitchedDrum1(notes)
 
 envOsc :: Tab -> Tab -> Cps -> Sig

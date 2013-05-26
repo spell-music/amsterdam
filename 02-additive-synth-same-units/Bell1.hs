@@ -15,7 +15,7 @@ The durations are 3 sec for the first tone, and 4 sec for the second tone. (Riss
 -}
 module Bell where
 
-import Csound.Base
+import Csound
 
 instr :: (D, D, D) -> Sig
 instr (amp, cps, rat) = sig amp * fadeOut * once (guardPoint $ eexps [256, 1]) * osc (sig $ cps * rat)

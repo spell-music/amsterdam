@@ -19,5 +19,4 @@ note nH = 2 *| temp (0.5, 125, nH)
 
 res = sco instr $ line $ fmap note nHs
 
-main = writeCsd "tmp.csd" res
--- main = totem res
+main = dac $ runMix res

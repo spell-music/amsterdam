@@ -112,6 +112,5 @@ sec3 = chord $ fmap (note3 (20, 0.4, 0.2, 4000, 1500)) [
 
 res = sco instr $ line [sec1, sec2, sec3]
 
-main = writeCsd "tmp.csd" res
--- main = totem res
+main = dac $ runMix res
 

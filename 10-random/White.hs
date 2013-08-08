@@ -11,8 +11,7 @@ instr amp = rand (linen (sig amp) rise idur dec)
     where rise = 0.4
           dec  = 0.4  
 
-res = sco instr $ 4 *| temp 0.5
+res = sco instr $ 4 *| temp 0.3
 
--- main = writeCsd "tmp.csd" res
-main = totem res
+main = dac $ runMix res
 

@@ -16,7 +16,6 @@ instr (amp, cps) = sig amp * fadeOut * env * osc (sig cps)
             
 res = sco instr notes
 
-main = writeCsd "tmp.csd" res
--- main = totem res
+main = dac $ runMix res
 
 

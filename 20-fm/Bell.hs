@@ -24,8 +24,6 @@ instr = chown imax fq1 fq2 fenv fdyn
 
 res = sco instr $ 15 *| temp (0.5, 5.07)
 
-main = writeCsd "tmp.csd" res
--- main = totem res
-
+main = dac $ runMix res
 
 

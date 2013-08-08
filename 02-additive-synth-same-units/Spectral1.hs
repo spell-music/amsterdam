@@ -35,7 +35,7 @@ instr (amp, cps) = sig amp * env * env * osc (sig cps)
     
 
 ch totalDur dts cs = chord $ zipWith note dts cs
-    where note dt cps = delay dt $ totalDur *| temp (0.07, cps)
+    where note dt cps = delay dt $ totalDur *| temp (0.03, cps)
 
 dt1 = [0, 2.5  ..]
 dt2 = [0, 1.25 ..]
@@ -59,8 +59,7 @@ notes = chord [
     
 res = sco instr notes    
     
-main = writeCsd "tmp.csd" res
--- main = totem res
+main = dac $ runMix res
         
 
 

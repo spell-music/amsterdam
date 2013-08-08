@@ -28,5 +28,5 @@ res = sco instr $ line [
     line $ fmap (note 128)  tables,
     line $ fmap (note 1024) tables]
 
-main = writeCsd "tmp.csd" res
+main = dac $ runMix res
 

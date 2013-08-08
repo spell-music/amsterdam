@@ -35,5 +35,4 @@ res = sco instr $ line [
     note 20 0.4 633,
     line $ fmap (note 4 0.4) [211, 999, 80]]
     
-main = writeCsd "tmp.csd" res
--- main = totem res
+main = dac $ runMix res

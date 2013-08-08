@@ -19,7 +19,6 @@ instr (amp, cps) = randh (linen (sig amp) rise idur dec) (sig cps)
     where rise = 0.4
           dec  = 0.4
 
-res = sco instr $ line $ fmap (temp . (0.5, )) [10000, 5000, 2500, 2000, 1000, 500, 250, 125, 50, 25]  
+res = sco instr $ line $ fmap (temp . (0.3, )) [10000, 5000, 2500, 2000, 1000, 500, 250, 125, 50, 25]  
     
-main = writeCsd "tmp.csd" res
--- main = totem res
+main = dac $ runMix res

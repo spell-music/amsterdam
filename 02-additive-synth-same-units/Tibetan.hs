@@ -34,6 +34,5 @@ res = sco instr $ chord $ fmap note [
     where note (start, dur, amp, cps, off, rise, dec) = delay start $ stretch dur $ 
                 temp (amp/15000, cps, off, rise, dec)
 
-main = writeCsd "tmp.csd" res
--- main = totem res
+main = dac $ runMix res
                 

@@ -27,7 +27,6 @@ instr (amp, cps) = baseInstr (amp, cps, 0.8 * amp, 0.3 * amp, 0.1 * cps)
 
 res = sco instr notes
 
-main = writeCsd "tmp.csd" res
--- main = totem res
+main = dac $ runMix res
 
 

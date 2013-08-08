@@ -18,6 +18,4 @@ import Csound
 instr :: (D, D, D, D, D, D) -> Sig
 instr (amp, pch, rise, dec, vibwth, vibrte) = undefined -- timout  ???
 
-main = writeCsd "tmp.csd" res
-
-
+main = dac $ runMix res

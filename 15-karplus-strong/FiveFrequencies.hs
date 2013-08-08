@@ -11,6 +11,6 @@ import Csound
 
 
 
-main = writeCsd "tmp.csd" res
+main = dac $ runMix res
 
 

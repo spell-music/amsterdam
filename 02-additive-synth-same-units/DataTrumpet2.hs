@@ -42,6 +42,5 @@ res = sco instr $ line [
    note 0.4 (0.5/5) 784 cps1,
    note 0.7 (0.6/5) 830 cps2]
 
-main = writeCsd "tmp.csd" res
--- main = totem res
+main = dac $ runMix res
 

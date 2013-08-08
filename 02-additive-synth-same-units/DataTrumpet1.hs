@@ -56,6 +56,5 @@ res = sco instr $ chord [
     2.01 +| note 293 ch22]
     where (ch21, ch22) = splitAt 5 ch2
 
-main = writeCsd "tmp.csd" res
--- main = totem res
+main = dac $ runMix res
 

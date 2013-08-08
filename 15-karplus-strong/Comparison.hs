@@ -33,4 +33,4 @@ notes = line $ fmap (\x -> delay 1 $ temp (0.5, x)) [220, 440]
     
 res = line [sco instr1 notes, sco instr2 notes]
 
-main = writeCsd "tmp.csd" res
+main = dac $ runMix res

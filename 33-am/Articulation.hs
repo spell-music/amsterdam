@@ -66,7 +66,6 @@ sec2 = sco instr2 $ chord [
 
 res = chord [sec1, sec2]
 
-main = writeCsd "tmp.csd" res
--- main = totem res
+main = dac $ runMix res
 
 

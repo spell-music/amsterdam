@@ -41,7 +41,6 @@ amps = fmap ( / 120) [45, 50, 55, 80, 60, 65, 70, 75, 80]
 res = sco instr $ line $ fmap note amps
     where note amp = delay 0.2 $ 0.3 *| temp (amp, 554, 0.05, 0.01)
 
-main = writeCsd "tmp.csd" res
--- main = totem res
+main = dac $ runMix res
 
 

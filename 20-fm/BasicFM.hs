@@ -22,7 +22,7 @@ instr :: (D, D, D, D) -> Sig
 instr (amp, cps1, max, cps2) = 
     linen (sig amp) 0.1 idur 0.1 * osc (sig cps1 + sig (max * cps2) * osc (sig cps2))
 
-note max cps2 = temp (0.5, 200, max, cps2)
+note max cps2 = temp (0.4, 200, max, cps2)
 
 maxs = [1 .. 5]
 cps2s = [200, 400 .. 1000]
@@ -33,5 +33,4 @@ sec4 = delay 1 $ line $ fmap (note 1) cps2s
 
 res = sco instr $ line [sec 200, sec 400, sec 600, sec4]
 
--- main = writeCsd "tmp.csd" res
-main = totem res
+main = dac $ runMix res

@@ -57,7 +57,4 @@ res = sco instr $ chord [
     i      9.36      4.94      3194        47        40       1.7     0.000    0.122        48     0.956      0         0.25      0.25,
     i     14.30      0.69      3566       610       312       2.1     0.000    0.147        49     0.995      0         0.34      0.45]
     
-main = writeCsd "tmp.csd" res
--- main = totem res
-
-
+main = dac $ runMix res

@@ -39,5 +39,4 @@ res = sco instr $ line [
     ch dt1 amp1 rat1,
     ch dt2 amp2 rat2]
 
-main = writeCsd "tmp.csd" res
--- main = totem res
+main = dac $ runMix res

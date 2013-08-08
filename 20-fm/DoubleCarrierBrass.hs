@@ -32,9 +32,7 @@ note x = line [temp (0.4, x, 3, 1.5), rest 1]
 
 res = sco instr $ line $ fmap note [300, 200, 400]
 
-main = writeCsd "tmp.csd" res
--- main = totem res
-
+main = dac $ runMix res
 
 
 

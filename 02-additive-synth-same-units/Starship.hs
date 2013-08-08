@@ -24,7 +24,6 @@ instr (amp, cps, rate, (off1, off2, off3, off4, off5)) =
     
 res = sco instr $ 20 *| temp (0.5, 1000, 20, (4.5, 9.4, 23, 39, 84))
 
-main = writeCsd "tmp.csd" res
--- main = totem res
+main = dac $ runMix res
     
 

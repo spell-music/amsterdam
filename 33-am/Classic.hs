@@ -41,5 +41,4 @@ res = sco instr $ line [
     line $ fmap i1 [0, 0.2 .. 1],
     line $ fmap i2 [150, 200, 300, 400, 800, 1200]]
 
--- main = writeCsd "tmp.csd" res
-main = totem res
+main = dac $ runMix res

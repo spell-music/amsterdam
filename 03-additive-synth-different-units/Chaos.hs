@@ -33,8 +33,7 @@ envelopes = fmap lins [
 
 res = sco instr $ 24 *| temp ((0.5, 880, 0.12), 200, (0.4, 1660, 0.17), (0.03, 200, 0.05), (0.08, 2400, 0.33))
 
-main = writeCsd "tmp.csd" res
--- main = totem res
+main = dac $ runMix res
 
 
 

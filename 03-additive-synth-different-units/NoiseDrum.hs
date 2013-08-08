@@ -31,8 +31,7 @@ notes (cps, t1, t2) = delay 1 $ line $ fmap note [(0.8, 0.2), (2, 0), (4, 1)]
 
 res = sco instr $ line $ fmap notes [(5, f13, f12), (5, f15, f14), (15, f13, f12)]
 
-main = writeCsd "tmp.csd" res
--- main = totem res
+main = dac $ runMix res
 
 
 

@@ -51,6 +51,4 @@ n = temp (0.5, 250, 2.66, 1500, 1.8)
 
 res = sco instr $ line [n, 2 *| n] 
 
--- main = writeCsd "tmp.csd" res
-main = totem res
-
+main = dac $ runMix res

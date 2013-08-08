@@ -19,5 +19,4 @@ instr () = a1 * oscBy (setSize 513 $ elins [1, 1]) 1
             
 res = sco instr $ temp ()
 
--- main = writeCsd "tmp.csd" res
-main = totem res
+main = dac $ runMix res

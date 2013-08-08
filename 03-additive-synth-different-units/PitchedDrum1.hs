@@ -22,6 +22,5 @@ notes = line [sec1, sec2]
 
 res = sco instr notes
 
-main = writeCsd "tmp.csd" res
--- main = totem res
+main = dac $ runMix res
 

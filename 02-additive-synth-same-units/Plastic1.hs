@@ -44,5 +44,4 @@ res = sco instr $ line [
     line [ chord [rest 1, 0.6 *| temp (amp, 682, 0.05, 0.15)] | amp <- [0.1, 0.15, 0.2, 0.25]],
     0.6 *| temp (0.3, 682, 0.05, 0.2)]
 
-main = writeCsd "tmp.csd" res
--- main = totem res
+main = dac $ runMix res

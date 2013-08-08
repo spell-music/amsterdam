@@ -28,7 +28,4 @@ res = sco instr $ line [
     rest 1,
     line $ fmap note i2]
     
-main = writeCsd "tmp.csd" res
--- main = totem res
-
-
+main = dac $ runMix res

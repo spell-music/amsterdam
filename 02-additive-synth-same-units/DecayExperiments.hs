@@ -43,5 +43,4 @@ res = sco instr $ line [
     where qs = [(cps1, waves), (cps2, waves), (cps1, reverse waves), 
                 (cps2, reverse waves), (cps1, waves), (cps3, waves)]
                 
-main = writeCsd "tmp.csd" res
--- main = totem res
+main = dac $ runMix res

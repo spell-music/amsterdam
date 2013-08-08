@@ -62,6 +62,5 @@ res = sco instr $ line [
    2 *| temp ((0.8, 160), (0.4, 75), (0.2, 61), waves !! 2, 0, (0.01, 1.95), (1.9, 0.1), (0.9, 0.8)),
    rest 1]
 
-main = writeCsd "tmp.csd" res
--- main = totem res
+main = dac $ runMix res
             

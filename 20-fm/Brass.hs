@@ -27,5 +27,4 @@ note x = 0.6 *| temp (0.5, x)
 
 res = sco instr $ line $ fmap note ns
 
-main = writeCsd "tmp.csd" res
--- main = totem res
+main = dac $ runMix res

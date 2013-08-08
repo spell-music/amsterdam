@@ -57,5 +57,4 @@ res = sco instr $ line $ fmap line [
     fmap i21 pchs,
     fmap i21 pchs]
 
--- main = writeCsd "tmp.csd" res
-main = totem res
+main = dac $ runMix res

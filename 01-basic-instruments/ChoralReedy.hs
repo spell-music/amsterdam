@@ -37,6 +37,5 @@ notes = delay 1 $ chord $ zipWith delay [0, 0.03, 0.05] $ fmap line $ L.transpos
             
 res = sco reedy notes
 
-main = writeCsd "tmp.csd" res
--- main = totem res
+main = dac $ runMix res
 

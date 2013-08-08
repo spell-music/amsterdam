@@ -33,8 +33,7 @@ cps = 440
 
 res = sco instr $ line [ delay 1 $ d *| temp (amp, cps, w, e) |  w <- waves, d <- durs, e <- envelopes ]
 
-main = writeCsd "tmp.csd" res
--- main = totem res
+main = dac $ runMix res
 
 
 

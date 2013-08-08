@@ -15,7 +15,6 @@ note (cps, rise, dec) = delay 1 $ temp (0.5, cps, sines [1], rise, dec)
 res = sco instr $ line $ fmap note [
     (440, 0.2, 0.3), (440, 0.1, 0.1), (220, 0.05, 0.2), (220, 0.3, 0.4)]
     
-main = writeCsd "tmp.csd" res
--- main = totem res
+main = dac $ runMix res
 
 

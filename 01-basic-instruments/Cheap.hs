@@ -26,7 +26,6 @@ res = sco instr $ delay 1 $ chord [
     6.5 *| temp (0.5, 80, 1000, 3),
     delay 2 $ 6.5 *| temp (0.5, 150, 750, 3)]
     
---main = writeCsd "tmp.csd" res
-main = totem res
+main = dac $ runMix res
     
     

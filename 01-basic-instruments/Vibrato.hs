@@ -55,5 +55,4 @@ res = sco instr $ line [
     line [ note (theWave, e, theCps) | e <- envelopes ],
     line [ note (theWave, theEnvelope2, c) | c <- lfoFreqs]]
     
-main = writeCsd "tmp.csd" res
--- main = totem res
+main = dac $ runMix res

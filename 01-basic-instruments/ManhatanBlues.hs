@@ -66,8 +66,7 @@ section = stretch 0.4 $ line [
       
 res = sco piano $ loop 4 section
 
-main = writeCsd "tmp.csd" res
--- main = totem res
+main = dac $ runMix res
 
 
 

@@ -28,7 +28,6 @@ note perc frq = delay 1 $ 1.5 *| temp (0.5, 1109, wave, env, 4, perc, frq)
           
 res = sco instr $ line [ note perc frq | frq <- [40, 110], perc <- [1, 50, 80] ]
 
-main = writeCsd "tmp.csd" res
--- main = totem res
+main = dac $ runMix res
 
 

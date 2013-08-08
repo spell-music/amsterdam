@@ -38,5 +38,4 @@ melody dt tab = delay dt $ line $ fmap (uncurry $ note tab) [
 
 res = sco reedy $ chord $ zipWith melody [0, 6 ..] envelopes
 
-main = writeCsd "tmp.csd" res
--- main = totem res
+main = dac $ runMix res

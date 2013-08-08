@@ -35,5 +35,4 @@ params = [(1, 0.01), (1, 0.1 ), (1, 0.2 ), (1, 1.5 ), (2, 0.01), (0.9, 0.01)]
 
 res = sco instr $ line [ note df ps | df <- durFreqs, ps <- params ]
 
-main = writeCsd "tmp.csd" res
--- main = totem res
+main = dac $ runMix res

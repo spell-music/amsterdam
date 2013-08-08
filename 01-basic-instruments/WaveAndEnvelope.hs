@@ -101,7 +101,6 @@ notes = line $ fmap (\x -> line [4 *| temp x, rest 2]) $ concat [waves1, waves2,
 
 res = sco envOsc notes
 
-main = writeCsd "tmp.csd" res
--- main = totem res
+main = dac $ runMix res
 
 

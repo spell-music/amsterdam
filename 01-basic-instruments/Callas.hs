@@ -26,6 +26,5 @@ rates  = [5, 2]
 
 res = sco instr $ line [ note w r | r <- rates, w <- widths ]
 
--- main = writeCsd "tmp.csd" res
-main = totem res
+main = dac $ runMix res
 

@@ -67,6 +67,5 @@ section3 = line $ fmap note $ drop 5 lfos
 
 res = sco instr $ line [section1, section2, section3]
 
-main = writeCsd "tmp.csd" res
--- main = totem res
+main = dac $ runMix res
 

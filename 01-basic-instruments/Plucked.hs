@@ -40,5 +40,4 @@ note (dur, cps, dec) = dur *| temp (amp, cps, dec)
        
 res = sco plucked notes
 
-main = writeCsd "tmp.csd" res
--- main = totem res
+main = dac $ runMix res

@@ -23,6 +23,8 @@ instr (amp, pch) = sig amp * tablei (256 + a1) (setSize 512 $ lins [-1, 200, -0.
           dec = ifB (idur >* 0.75) 0.64 (idur - 0.085)
           a1  = env * osc (sig $ cpspch pch)  
 
+-- | Takes a duration and a pitch and makes a track with that one note.
+i1 :: (Num a, Fractional c) => a -> b -> Track a (c, b)
 i1 dur pch = dur *| temp (0.5, pch)
 
 res = sco instr $ line [

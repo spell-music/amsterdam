@@ -17,11 +17,19 @@ module Clarinet where
 
 import Csound
 
+-- | Takes an amplitude (between 0 and 1) and pitch (as 8ve.pc. i.e. 8.00 is middle C, 8.01 is D) and makes a signal to emulate a clarinet.  
 instr :: (D, D) -> Sig
-instr (amp, pch) = sig amp * tablei (256 + a1) (setSize 512 $ lins [-1, 200, -0.5, 112, 0.5, 200, 1])
-    where env = linen 255 0.085 idur dec
+instr (amp, pch) = sig amp * tablei (256 + a1) (setSize 512 $ lins [-1, 200, -0.5, 112, 0.5, 200, 1])  -- takes the basic sound envelope defined below, and puts it as a clarinet sound
+    where 
+          -- a sound envelope based on the duration (idur) and the right-hand envelope
+          env :: Sig
+          env = linen 255 0.085 idur dec
+          -- a right-hand envelope (decrescendo) if the duration is longer than 0.75
+          dec :: D
           dec = ifB (idur >* 0.75) 0.64 (idur - 0.085)
-          a1  = env * osc (sig $ cpspch pch)  
+          -- takes the envelope signal defined above puts it at the right pitch
+          a1 :: Sig
+          a1  = env * osc (sig $ cpspch pch) 
 
 -- | Takes a duration and a pitch and makes a track with that one note.
 i1 :: (Num a, Fractional c) => a -> b -> Track a (c, b)

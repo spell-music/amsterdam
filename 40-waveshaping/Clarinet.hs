@@ -35,6 +35,7 @@ instr (amp, pch) = sig amp * tablei (256 + a1) (setSize 512 $ lins [-1, 200, -0.
 i1 :: (Num a, Fractional c) => a -> b -> Track a (c, b)
 i1 dur pch = dur *| temp (0.5, pch)
 
+-- | A sample list of notes, played by the clarinet instrument, to be rendered by the main function.
 res = sco instr $ line [
     i1   0.750   7.04,
     i1   0.250   7.07,
@@ -58,4 +59,6 @@ res = sco instr $ line [
     i1   0.125   9.04,
     i1   0.125   9.05]
 
+-- | Takes the res sample above and renders it to the soundcard in real time.
+main :: IO ()
 main = dac $ runMix res

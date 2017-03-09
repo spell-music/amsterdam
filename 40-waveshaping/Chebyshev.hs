@@ -43,17 +43,17 @@ f90 = chebs [1, 1, 0, 0, 0, 0, 0, 6, 5, 4]
 
 
 -- | Takes a table, duration and pitch and makes a track with that one note.
-note :: (Num b, Fractional t) => a -> b -> c -> Track b (t, c, a)
+note :: Tab -> D -> D -> Sco (D, D, Tab)
 note tab dur pch = dur *| temp (0.5, pch, tab)
 
 -- | Takes a duration and a pitch and makes a track with that one note with the Chebyshev f88.
-i1 :: (Num a, Fractional c) => a -> b -> Track a (c, b, Tab)
+i1 :: D -> D -> Sco (D, D, Tab)
 i1 = note f88
 -- | Takes a duration and a pitch and makes a track with that one note with the Chebyshev f89.
-i2 :: (Num a, Fractional c) => a -> b -> Track a (c, b, Tab)
+i2 :: D -> D -> Sco (D, D, Tab)
 i2 = note f89
 -- | Takes a duration and a pitch and makes a track with that one note with the Chebyshev f90.
-i3 :: (Num a, Fractional c) => a -> b -> Track a (c, b, Tab)
+i3 :: D -> D -> Sco (D, D, Tab)
 i3 = note f90
 
 -- | A sample list of notes, played by the Chebyshev instrument, to be rendered by the main function.

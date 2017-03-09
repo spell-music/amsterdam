@@ -27,11 +27,19 @@ instr (amp, pch, tf) = a1 * env  -- put the envelope and amplitude together
           env :: Sig
           env = linen (sig amp) 0.085 idur 0.04
             
+-- | Takes a list of Chebyshev coefficients and produces a table to generate a signal. 
+chebs :: [Double] -> Tab            
 chebs = setSize 8193 . chebs1 4096 1
 
+-- | Produces a table for Chebyshev f88.
+f88 :: Tab
 f88 = chebs [1, 1]
+-- | Produces a table for Chebyshev f89.
+f89 :: Tab
 f89 = chebs [1, 1, 1, 2]
-f90 = chebs [1, 1, 0, 0, 0, 0, 0, 6, 5, 4]  
+-- | Produces a table for Chebyshev f90.
+f90 :: Tab
+f90 = chebs [1, 1, 0, 0, 0, 0, 0, 6, 5, 4] 
 
 note tab dur pch = dur *| temp (0.5, pch, tab)
 

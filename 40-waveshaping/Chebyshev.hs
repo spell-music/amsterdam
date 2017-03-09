@@ -29,10 +29,13 @@ f90 = chebs [1, 1, 0, 0, 0, 0, 0, 6, 5, 4]
 
 note tab dur pch = dur *| temp (0.5, pch, tab)
 
+
 i1 = note f88
 i2 = note f89
 i3 = note f90
 
+-- | A sample list of notes, played by the Chebyshev instrument, to be rendered by the main function.
+res :: Sco (Mix a)
 res = sco instr $ line [
     i1   0.750   7.04,
     i1   0.250   7.07,
@@ -56,5 +59,7 @@ res = sco instr $ line [
     i3   0.125   9.04,
     i3   0.125   9.05]
 
+-- | Takes the res sample above and renders it to the soundcard in real time.
+main :: IO ()
 main = dac $ runMix res
 

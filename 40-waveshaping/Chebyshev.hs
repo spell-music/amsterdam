@@ -16,9 +16,15 @@ module Chebyshev where
 
 import Csound
 
+-- | Takes an amplitude (between 0 and 1), pitch (as 8ve.pc. i.e. 8.00 is middle C, 8.01 is D) and table describing the sound and makes a signal matching Chebyshev coefficients.
 instr :: (D, D, Tab) -> Sig
-instr (amp, pch, tf) = a1 * env
-    where a1  = tablei (4096 * osc (sig $ cpspch pch)) tf
+instr (amp, pch, tf) = a1 * env  -- put the envelope and amplitude together
+    where 
+          -- make a signal matching the pitch 
+          a1 :: Sig
+          a1  = tablei (4096 * osc (sig $ cpspch pch)) tf
+          -- a sound envelope based on the amplitde (amp) and duration (idur)
+          env :: Sig
           env = linen (sig amp) 0.085 idur 0.04
             
 chebs = setSize 8193 . chebs1 4096 1

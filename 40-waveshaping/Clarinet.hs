@@ -36,6 +36,7 @@ i1 :: (Num a, Fractional c) => a -> b -> Track a (c, b)
 i1 dur pch = dur *| temp (0.5, pch)
 
 -- | A sample list of notes, played by the clarinet instrument, to be rendered by the main function.
+res :: Sco (Mix a)
 res = sco instr $ line [
     i1   0.750   7.04,
     i1   0.250   7.07,
